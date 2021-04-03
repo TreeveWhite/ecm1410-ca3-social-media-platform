@@ -17,7 +17,7 @@ import socialmedia.SocialMediaPlatform;
 public class SocialMediaPlatformTestApp {
 
 	/**
-	 * Test method.
+	 * Test method. hey test
 	 * 
 	 * @param args not used
 	 */
