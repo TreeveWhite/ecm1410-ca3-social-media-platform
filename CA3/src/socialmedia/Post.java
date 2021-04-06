@@ -52,9 +52,13 @@ public class Post {
      * @throws InvalidPostException     Thrown if the message is longer than 100 characters.
      */
     public Post(Account author, String message)
-                throws InvalidPostException{
+                throws InvalidPostException,
+                HandleNotRecognisedException{
         if (message.length() > 100) {
             throw new InvalidPostException("Post has a length of more than 100 characters.");
+        }
+        if (author == null) {
+            throw new HandleNotRecognisedException("Account with given handle does not exist.");
         }
         this.author = author;
         this.message = message;

@@ -27,7 +27,8 @@ public class Comment extends Post{
      * @throws InvalidPostException     Thrown when the message is longer than 100 characters.
      */
     public Comment(Account author, String message, Post linkedPost) 
-                    throws InvalidPostException {
+                    throws InvalidPostException,
+                    HandleNotRecognisedException {
         super(author, message);
         this.linkedPost = linkedPost;
     }

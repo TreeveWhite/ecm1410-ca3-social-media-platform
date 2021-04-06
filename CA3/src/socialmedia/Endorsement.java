@@ -26,7 +26,8 @@ public class Endorsement extends Post {
      * @throws InvalidPostException     Thrown when the message is longer than 100 characters.
      */
     public Endorsement(Account author, Post linkedPost)
-                        throws InvalidPostException {
+                        throws InvalidPostException,
+                        HandleNotRecognisedException {
         super(author, linkedPost.getMessage());
         this.linkedPost = linkedPost;
     }
