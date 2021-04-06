@@ -19,6 +19,11 @@ public class Endorsement extends Post {
     /**
      * This is the constructor method for an Endorsement, it takes in the parameters author which refers
      * to the account associated with the post and a Post which the endorsement is associated with.
+     * The message of the post it is associated wth is formatted as:
+     * 
+     * <p>
+	 * <code>"EP@" + [endorsed account handle] + ": " + [endorsed message]</code>
+	 * <p>
      * 
      * @param author        The account associated with the endorsement.
      * @param linkedPost    The Post which the endorsement has ben added on.
