@@ -12,6 +12,8 @@ package socialmedia;
  */
 public class Account {
 
+    private String handle;
+
     /**
      * 
      * @param handle
@@ -27,6 +29,10 @@ public class Account {
      */
     public Account(String Handle, String description) {
 
+    }
+
+    public String getHandle() {
+        return handle;
     }
     
 }
