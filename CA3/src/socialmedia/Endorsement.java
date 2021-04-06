@@ -1,9 +1,11 @@
 package socialmedia;
 
 /**
+ * <h2>Endorsement</h2>
  * This class consists of the methods and attributes of a Endorsement.
- * A Endorsement inherits from a Post and thefore has access to all of a Post's attributes 
- * and methods. In addition to these, a Endorsement has a linkedPost attribute which refers
+ * <p>
+ * An Endorsement inherits from a Post and thefore has access to all of a Post's attributes 
+ * and methods. In addition to these, an Endorsement has a linkedPost attribute which refers
  * to the Post which the endorsement has been placed on and replicates the message of the post
  * it is associated with.
  */

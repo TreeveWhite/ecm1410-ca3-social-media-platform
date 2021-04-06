@@ -1,7 +1,9 @@
 package socialmedia;
 
 /**
+ * <h2>Comment</h2>
  * This class consists of the methods and attributes of a Comment.
+ * <p>
  * A Comment inherits from a Post and thefore has access to all of a Post's attributes 
  * and methods. In addition to these, a Comment has a linkedPost attribute which refers
  * to the Post which the comment has been placed on.

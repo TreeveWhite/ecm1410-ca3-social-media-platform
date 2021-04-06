@@ -1,8 +1,10 @@
 package socialmedia;
 
 /**
- * This class consists of the methods and attributes of a Post.
+ * <h2>Post</h1>
  * 
+ * This class consists of the methods and attributes of a Post.
+ * <p>
  * A Post had a unique sequencial ID, a message up to 100 characters long, an 
  * author (Account) it is associated with, a list of all comments it recieves 
  * and a list of all endorsements it recieves.
@@ -66,7 +68,7 @@ public class Post {
      */
     public void addComment(Comment newComment) {
         Comment[] newList = new Comment[allComments.length + 1];
-        for (int i = 0; i < newList.length; i++) {
+        for (int i = 0; i < allComments.length; i++) {
             newList[i] = allComments[i];
         }
         newList[allComments.length] = newComment;
@@ -80,7 +82,7 @@ public class Post {
      */
     public void addEndorsement(Endorsement newEndorsement) {
         Endorsement[] newList = new Endorsement[allEndorsements.length + 1];
-        for (int i = 0; i < newList.length; i++) {
+        for (int i = 0; i < allEndorsements.length; i++) {
             newList[i] = allEndorsements[i];
         }
         newList[allEndorsements.length] = newEndorsement;
