@@ -151,32 +151,108 @@ public class SocialMedia implements SocialMediaPlatform {
 			}
 		}
 		Post newPost = new Post(author, "message");
+		addPost(newPost);
 		return newPost.getID();
 	}
 
     /**
-     * 
+     * This method impliments the SocialMediaPlatform method endorsePost by creating an
+	 * endorsement post of an existing post, similar to a retweet on Twitter. An 
+	 * endorsement post is a special post. It contains a reference to the endorsed post
+	 * and its message is formatted as:
+	 * <p>
+	 * <code>"EP@" + [endorsed account handle] + ": " + [endorsed message]</code>
+	 * <p>
+	 * 
+	 * @param handle 	The handle of the account associated with the endorsement.
+	 * @param id		The id of the post associated with the endorsement.
+	 * 
+	 * @throws HandleNotRecognisedException		Thrown when the handle is not associated with a account
+	 * 											on the platform.
+	 * @throws PostIDNotRecognisedException		Thrown when the post id is not associated with a post on
+	 * 											the platform.
+	 * @throws NotActionablePostException		Thrown when attempting to act upon a non actionabe post.
+	 * 
+	 * @return The sequencial ID of the created endorsement.
      */
 	@Override
 	public int endorsePost(String handle, int id)
 							throws HandleNotRecognisedException,
 							PostIDNotRecognisedException,
 							NotActionablePostException {
-		// TODO Auto-generated method stub
-		return 0;
+		Account author = null;
+		for (Account account : allAccounts) {
+			if (handle.equals(account.getHandle())) {
+				author = account;
+				break;
+			}
+		}
+		Post linkedPost = null;
+		for (Post post : allPosts) {
+			if (id == post.getID()) {
+				linkedPost = post;
+				break;
+			}
+		}
+
+		if (linkedPost == null) {
+			throw new PostIDNotRecognisedException("Post ID is not associated with Post in platform.");
+		}
+
+		Endorsement newEndorsement = new Endorsement(author, linkedPost);
+		linkedPost.addEndorsement(newEndorsement);
+		addPost(newEndorsement);
+		return newEndorsement.getID();
 	}
 
     /**
-     * 
-     */
+	 * This method impliments the SocialMediaPlatform method commentPost by creating a comment post 
+	 * referring to an existing post, similarly to a reply on Twitter. A comment post is a special
+	 * post. It contains a reference to the post being commented upon.
+	 * 
+	 * @param handle 	The handle of the account associated with the endorsement.
+	 * @param id		The id of the post associated with the endorsement.
+	 * @param message 	The message conatined in the comment.
+	 * 
+	 * @throws HandleNotRecognisedException		Thrown when the handle is not associated with a account
+	 * 											on the platform.
+	 * @throws PostIDNotRecognisedException		Thrown when the post id is not associated with a post on
+	 * 											the platform.
+	 * @throws NotActionablePostException		Thrown when attempting to act upon a non actionabe post.
+	 * @throws InvalidPostException 			Thrown if the message is empty or has more than
+	 *                                      	100 characters.	
+	 * 
+	 * @return The sequencial ID of the created comment.
+	 */
 	@Override
 	public int commentPost(String handle, int id, String message)
 							throws HandleNotRecognisedException,
 							PostIDNotRecognisedException,
 							NotActionablePostException,
 							InvalidPostException {
-		// TODO Auto-generated method stub
-		return 0;
+		Account author = null;
+		for (Account account : allAccounts) {
+			if (handle.equals(account.getHandle())) {
+				author = account;
+				break;
+			}
+		}
+		Post linkedPost = null;
+		for (Post post : allPosts) {
+			if (id == post.getID()) {
+				linkedPost = post;
+				break;
+			}
+		}
+
+		if (linkedPost == null) {
+			throw new PostIDNotRecognisedException("Post ID is not associated with Post in platform.");
+		}
+
+		Comment newComment = new Comment(author, message, linkedPost);
+		linkedPost.addComment(newComment);
+		addPost(newComment);
+		return newComment.getID();
 	}
 
     /**
