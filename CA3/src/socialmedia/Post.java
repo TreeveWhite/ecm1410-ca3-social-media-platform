@@ -49,8 +49,8 @@ public class Post {
      * 
      * @throws InvalidPostException     Thrown if the message is longer than 100 characters.
      */
-    public Post(Account author, String message) throws InvalidPostException{
-
+    public Post(Account author, String message)
+                throws InvalidPostException{
         if (message.length() > 100) {
             throw new InvalidPostException("Post has a length of more than 100 characters.");
         }

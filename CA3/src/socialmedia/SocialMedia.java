@@ -5,9 +5,13 @@ import java.io.IOException;
 /**
  * SocialMedia
  * 
- * This is an implimentation of the SocialMediaPlatform Interfance.
+ * This is an implimentation of the SocialMediaPlatform Interface.
  */
 public class SocialMedia implements SocialMediaPlatform {
+
+	private Account[] allAccounts;
+
+	private Post[] allPosts;
 
     /**
      * 
@@ -78,8 +82,15 @@ public class SocialMedia implements SocialMediaPlatform {
      */
 	@Override
 	public int createPost(String handle, String message) throws HandleNotRecognisedException, InvalidPostException {
-		// TODO Auto-generated method stub
-		return 0;
+		Account author = null;
+		for (Account account : allAccounts) {
+			if (handle.equals(account.getHandle())) {
+				author = account;
+				break;
+			}
+		}
+		Post newPost = new Post(author, "message");
+		return newPost.getID();
 	}
 
     /**
