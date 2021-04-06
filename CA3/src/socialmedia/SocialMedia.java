@@ -55,7 +55,9 @@ public class SocialMedia implements SocialMediaPlatform {
      * 
      */
     @Override
-	public int createAccount(String handle) throws IllegalHandleException, InvalidHandleException {
+	public int createAccount(String handle)
+								throws IllegalHandleException,
+								InvalidHandleException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -64,7 +66,9 @@ public class SocialMedia implements SocialMediaPlatform {
      * 
      */
 	@Override
-	public int createAccount(String handle, String description) throws IllegalHandleException, InvalidHandleException {
+	public int createAccount(String handle, String description)
+								throws IllegalHandleException,
+								InvalidHandleException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -73,7 +77,8 @@ public class SocialMedia implements SocialMediaPlatform {
      * 
      */
 	@Override
-	public void removeAccount(int id) throws AccountIDNotRecognisedException {
+	public void removeAccount(int id)
+								throws AccountIDNotRecognisedException {
 		// TODO Auto-generated method stub
 
 	}
@@ -82,7 +87,8 @@ public class SocialMedia implements SocialMediaPlatform {
      * 
      */
 	@Override
-	public void removeAccount(String handle) throws HandleNotRecognisedException {
+	public void removeAccount(String handle)
+								throws HandleNotRecognisedException {
 		// TODO Auto-generated method stub
 
 	}
@@ -92,7 +98,9 @@ public class SocialMedia implements SocialMediaPlatform {
      */
 	@Override
 	public void changeAccountHandle(String oldHandle, String newHandle)
-			throws HandleNotRecognisedException, IllegalHandleException, InvalidHandleException {
+									throws HandleNotRecognisedException,
+									IllegalHandleException,
+									InvalidHandleException {
 		// TODO Auto-generated method stub
 
 	}
@@ -101,7 +109,8 @@ public class SocialMedia implements SocialMediaPlatform {
      * 
      */
 	@Override
-	public void updateAccountDescription(String handle, String description) throws HandleNotRecognisedException {
+	public void updateAccountDescription(String handle, String description) 
+										throws HandleNotRecognisedException {
 		// TODO Auto-generated method stub
 
 	}
@@ -110,16 +119,30 @@ public class SocialMedia implements SocialMediaPlatform {
      * 
      */
 	@Override
-	public String showAccount(String handle) throws HandleNotRecognisedException {
+	public String showAccount(String handle)
+								throws HandleNotRecognisedException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
     /**
-     * 
+     * This method impliments the SocialMediaPlatform method createPost by creating a post
+	 * for the account identified by the given handle with the following message.
+	 * 
+	 * @param 	handle  The handle of the account the post is associated with.
+	 * @param 	message The message associated with the post.
+	 * 
+	 * @throws HandleNotRecognisedException Thrown If the handle does not match to any
+	 *                                      account in the system.
+	 * @throws InvalidPostException         Thrown if the message is empty or has more than
+	 *                                      100 characters.
+	 * 
+	 * @return The sequential ID of the created post.
      */
 	@Override
-	public int createPost(String handle, String message) throws HandleNotRecognisedException, InvalidPostException {
+	public int createPost(String handle, String message)
+							throws HandleNotRecognisedException,
+							InvalidPostException {
 		Account author = null;
 		for (Account account : allAccounts) {
 			if (handle.equals(account.getHandle())) {
@@ -136,7 +159,9 @@ public class SocialMedia implements SocialMediaPlatform {
      */
 	@Override
 	public int endorsePost(String handle, int id)
-			throws HandleNotRecognisedException, PostIDNotRecognisedException, NotActionablePostException {
+							throws HandleNotRecognisedException,
+							PostIDNotRecognisedException,
+							NotActionablePostException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -145,8 +170,11 @@ public class SocialMedia implements SocialMediaPlatform {
      * 
      */
 	@Override
-	public int commentPost(String handle, int id, String message) throws HandleNotRecognisedException,
-			PostIDNotRecognisedException, NotActionablePostException, InvalidPostException {
+	public int commentPost(String handle, int id, String message)
+							throws HandleNotRecognisedException,
+							PostIDNotRecognisedException,
+							NotActionablePostException,
+							InvalidPostException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -155,7 +183,8 @@ public class SocialMedia implements SocialMediaPlatform {
      * 
      */
 	@Override
-	public void deletePost(int id) throws PostIDNotRecognisedException {
+	public void deletePost(int id) 
+							throws PostIDNotRecognisedException {
 		// TODO Auto-generated method stub
 
 	}
@@ -164,7 +193,8 @@ public class SocialMedia implements SocialMediaPlatform {
      * 
      */
 	@Override
-	public String showIndividualPost(int id) throws PostIDNotRecognisedException {
+	public String showIndividualPost(int id)
+										throws PostIDNotRecognisedException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -174,7 +204,8 @@ public class SocialMedia implements SocialMediaPlatform {
      */
 	@Override
 	public StringBuilder showPostChildrenDetails(int id)
-			throws PostIDNotRecognisedException, NotActionablePostException {
+												throws PostIDNotRecognisedException,
+												NotActionablePostException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -246,7 +277,8 @@ public class SocialMedia implements SocialMediaPlatform {
      * 
      */
 	@Override
-	public void savePlatform(String filename) throws IOException {
+	public void savePlatform(String filename) 
+							throws IOException {
 		// TODO Auto-generated method stub
 
 	}
@@ -255,7 +287,9 @@ public class SocialMedia implements SocialMediaPlatform {
      * 
      */
 	@Override
-	public void loadPlatform(String filename) throws IOException, ClassNotFoundException {
+	public void loadPlatform(String filename) 
+							throws IOException,
+							ClassNotFoundException {
 		// TODO Auto-generated method stub
 
 	}
