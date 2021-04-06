@@ -3,15 +3,53 @@ package socialmedia;
 import java.io.IOException;
 
 /**
- * SocialMedia
+ * <h2>SocialMedia</h2>
  * 
  * This is an implimentation of the SocialMediaPlatform Interface.
+ * <p>
+ * 
  */
 public class SocialMedia implements SocialMediaPlatform {
 
+	/**
+	 * This is an array of all accounts on the platform.
+	 */
 	private Account[] allAccounts;
 
+	/**
+	 * This is an array of all posts on the platform.
+	 */
 	private Post[] allPosts;
+
+	/**
+	 * This method is used to add a instance of an account to the array of all accounts on
+	 * the platform.
+	 * 
+	 * @param newAccount	The new account to be added to the array.
+	 */
+	public void addAccount(Account newAccount) {
+		Account[] newList = new Account[allAccounts.length + 1];
+		for (int i = 0; i < allAccounts.length; i++) {
+			newList[i] = allAccounts[i];
+		}
+		newList[allAccounts.length] = newAccount;
+		allAccounts = newList;
+	}
+
+	/**
+	 * This method is used to add a instance of an account to the array of all accounts on
+	 * the platform.
+	 * 
+	 * @param newAccount	The new account to be added to the array.
+	 */
+	public void addPost(Post newPost) {
+		Post[] newList = new Post[allPosts.length + 1];
+		for (int i = 0; i < allPosts.length; i++) {
+			newList[i] = allPosts[i];
+		}
+		newList[allPosts.length] = newPost;
+		allPosts = newList;
+	}
 
     /**
      * 
