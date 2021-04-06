@@ -28,7 +28,7 @@ public class Endorsement extends Post {
     public Endorsement(Account author, Post linkedPost)
                         throws InvalidPostException,
                         HandleNotRecognisedException {
-        super(author, linkedPost.getMessage());
+        super(author, "EP@"+linkedPost.getAuthor().getHandle()+": "+linkedPost.getMessage());
         this.linkedPost = linkedPost;
     }
 
