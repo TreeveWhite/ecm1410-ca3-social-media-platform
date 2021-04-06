@@ -49,7 +49,8 @@ public class Post {
      * @param author    The account associated with the post.
      * @param message   The message contained in the post.
      * 
-     * @throws InvalidPostException     Thrown if the message is longer than 100 characters.
+     * @throws InvalidPostException             Thrown if the message is longer than 100 characters.
+     * @throws HandleNotRecognisedException     Thrown if an Account with given handle does not exist.
      */
     public Post(Account author, String message)
                 throws InvalidPostException,
