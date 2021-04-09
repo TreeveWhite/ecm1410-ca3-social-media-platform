@@ -75,7 +75,7 @@ public class SocialMedia implements SocialMediaPlatform {
 								InvalidHandleException {
 		Account newAccount = new Account(handle);
 		addAccount(newAccount);
-		return newAccount.getID();
+		return newAccount.getId();
 	}
 
     /**
@@ -85,8 +85,9 @@ public class SocialMedia implements SocialMediaPlatform {
 	public int createAccount(String handle, String description)
 								throws IllegalHandleException,
 								InvalidHandleException {
-		// TODO Auto-generated method stub
-		return 0;
+		Account newAccount = new Account(handle, description);
+		addAccount(newAccount);
+		return newAccount.getId();
 	}
 
     /**
@@ -95,7 +96,11 @@ public class SocialMedia implements SocialMediaPlatform {
 	@Override
 	public void removeAccount(int id)
 								throws AccountIDNotRecognisedException {
-		// TODO Auto-generated method stub
+		for (Account account : allAccounts) {
+			if (account.getId() == id) {
+
+			}
+		}
 
 	}
 

@@ -5,14 +5,17 @@ import java.util.Set;
 
 /**
  * <h2>Account</h2>
- * 
  */
 public class Account {
-    
-    private String handle;
-    private String description;
+
     private int id;
+
+    private String handle;
+
+    private String description;
     private static final Set<String> usernames = new HashSet<String>();
+    private static int numAccounts = 0;
+
     private static int numAccounts = 0;
 
     /**
@@ -106,6 +109,10 @@ public class Account {
      */
     public void updateDescription(String description) {
         this.description = description;
+    }
+
+    public int getId() {
+        return id;
     }
     
 }
