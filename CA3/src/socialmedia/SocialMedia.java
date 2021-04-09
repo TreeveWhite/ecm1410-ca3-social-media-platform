@@ -75,7 +75,7 @@ public class SocialMedia implements SocialMediaPlatform {
 								InvalidHandleException {
 		Account newAccount = new Account(handle);
 		addAccount(newAccount);
-		return newAccount.getID();
+		return newAccount.getId();
 	}
 
     /**

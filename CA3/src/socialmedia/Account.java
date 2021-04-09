@@ -5,13 +5,18 @@ import java.util.Set;
 
 /**
  * <h2>Account</h2>
- * 
  */
 public class Account {
 
+    private int id;
+
     private String handle;
+
     private String description;
+
     private static final Set<String> usernames = new HashSet<String>();
+
+    private static int numAccounts = 0;
 
     /**
      * This is the constructor method for an Account, it takes in the parameter handle which
@@ -40,6 +45,7 @@ public class Account {
             throw new InvalidHandleException("The handle cannot be empty.");
         }
         this.handle = handle;
+        this.id = numAccounts++;
 
     }
 
@@ -75,6 +81,7 @@ public class Account {
         }
         this.handle = handle;
         this.description = description;
+        this.id = numAccounts++;
     }
 
     /**
@@ -102,6 +109,10 @@ public class Account {
      */
     public void updateDescription(String description) {
         this.description = description;
+    }
+
+    public int getId() {
+        return id;
     }
     
 }
