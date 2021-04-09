@@ -4,14 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Account
+ * <h2>Account</h2>
  * 
- * Hey mate,
- * we need to keep a record of all authors so maybe do like a hashset as a static variable we can just add
- * all the handles (usernames) to? We can also then just have a arry of all users in the Social Media class.
- * 
- * eg 
- * private static final Set<String> usernames = new HashSet<String>();
  */
 public class Account {
 
@@ -54,7 +48,7 @@ public class Account {
      * will be the username of the account, and the description which will be connected to the
      * account.
      *  
-     * @param Handle    The username the user wants to use.
+     * @param Handle        The username the user wants to use.
      * @param description   The description the user wants to display.
      * 
      * @throws IllegalHandleException   Thrown if the handle is already in use.
