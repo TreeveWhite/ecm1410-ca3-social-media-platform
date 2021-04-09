@@ -34,6 +34,15 @@ public class Comment extends Post{
     }
 
     /**
+     * This method is used to change the post which the comment is associated with.
+     * 
+     * @param newLinkedPost     The new post the comment is associated with.
+     */
+    public void changeLinkedPost(Post newLinkedPost) {
+        this.linkedPost = newLinkedPost;
+    }
+
+    /**
      * This method returns the Post the comment is associated with.
      * 
      * @return The post the comment is associated with.
