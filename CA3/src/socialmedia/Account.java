@@ -23,9 +23,20 @@ public class Account {
      * 
      * @param handle
      */
-    public Account(String handle) {
+    public Account(String handle) 
+                        throws IllegalHandleException,
+                        InvalidHandleException{
         if (!usernames.add(handle)) {
-            // throw error
+            throw new IllegalHandleException("Handle is already in use in the system.");
+        }
+        if (handle.length() > 30) {
+            throw new InvalidHandleException("Your handle is longer than 30 characters.");
+        }
+        if (handle.contains(" ")) {
+            throw new InvalidHandleException("The handle cannot contain white space.");
+        }
+        if (handle.equals("")) {
+            throw new InvalidHandleException("The handle cannot be empty.");
         }
         this.handle = handle;
 
@@ -36,9 +47,23 @@ public class Account {
      * @param Handle
      * @param description
      */
-    public Account(String handle, String description) {
+    public Account(String handle, String description) 
+                            throws IllegalHandleException,
+                            InvalidHandleException {
         if (!usernames.add(handle)) {
-            // throw error
+            if (usernames.contains(handle)) {
+                throw new IllegalHandleException("Handle is already in use in the system. ");
+            }
+            
+        }
+        if (handle.length() > 30) {
+            throw new InvalidHandleException("Your handle is longer than 30 characters.");
+        }
+        if (handle.contains(" ")) {
+            throw new InvalidHandleException("The handle cannot contain white space.");
+        }
+        if (handle.equals("")) {
+            throw new InvalidHandleException("The handle cannot be empty.");
         }
         this.handle = handle;
         this.description = description;
@@ -53,10 +78,7 @@ public class Account {
         return description;
     }
 
-    public void updateDescription(String handle, String description) {
-        if (!usernames.contains(handle)) {
-            // throw error
-        }
+    public void updateDescription(String description) {
         this.description = description;
     }
     
