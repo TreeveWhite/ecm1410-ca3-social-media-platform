@@ -88,6 +88,18 @@ public class Post {
     }
 
     /**
+     * This is the constructor method for an empty Post, it takes in no parameters and is a replacement 
+     * placeholder for a post. It does not refer to an account and cannot be acted upon. The message
+     * contained in an empty post is "The original content was removed from the system and is no longer 
+     * available.".
+     */
+    public Post() {
+        this.author = null;
+        this.message = "The original content was removed from the system and is no longer available.";
+        this.id = numPosts++;
+    }
+
+    /**
      * This methods adds a new comment to the post's list of comments it has recieved.
      * 
      * @param newComment    The new comment to add to its list.
