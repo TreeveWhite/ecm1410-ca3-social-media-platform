@@ -15,7 +15,7 @@ import java.util.HashSet;
 public class Account {
 
     private String handle;
-    private HashSet accounts = new HashSet<String>();
+    private HashSet<String> accounts = new HashSet<String>();
 
     /**
      * 
