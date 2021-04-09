@@ -16,13 +16,16 @@ public class Account {
 
     private String handle;
     private HashSet accounts = new HashSet<String>();
-    
+
     /**
      * 
      * @param handle
      */
     public Account(String handle) {
-        
+        if (!accounts.contains(handle)) {
+            accounts.add(handle);
+            this.handle = handle;
+        }
 
     }
 
