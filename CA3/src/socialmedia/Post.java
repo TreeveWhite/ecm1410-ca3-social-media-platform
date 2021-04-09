@@ -44,7 +44,8 @@ public class Post {
 
     /**
      * This is the constructor method for a Post, it takes in the parameters author which refers
-     * to the account associated with the post and message which must be up to 100 characters long.
+     * to the account associated with the post and message which must be up to 100 characters long
+     * for a new post or comment.
      *  
      * @param author    The account associated with the post.
      * @param message   The message contained in the post.
@@ -66,13 +67,23 @@ public class Post {
         this.id = numPosts++;
     }
 
+    /**
+     * This is the constructor method for a Post, it takes in the parameters author which refers
+     * to the account associated with the post and linkedPost which is the post the new post is associated
+     * with when creating an endorsement post.
+     * 
+     * @param author        The account associated with the post.
+     * @param linkedPost    The post associated with this endorsement post.
+     * 
+     * @throws HandleNotRecognisedException     Thrown if an Account with given handle does not exist.
+     */
     public Post(Account author, Post linkedPost) 
                 throws HandleNotRecognisedException {
         if (author == null) {
             throw new HandleNotRecognisedException("Account with given handle does not exist.");
         }
         this.author = author;
-        this.message = "EP@"+linkedPost.getAuthor().getHandle()+": "+linkedPost.getMessage() ;
+        this.message = "EP@"+linkedPost.getAuthor().getHandle()+": "+linkedPost.getMessage();
         this.id = numPosts++;
     }
 
