@@ -37,6 +37,21 @@ public class SocialMedia implements SocialMediaPlatform {
 	}
 
 	/**
+	 * This method is used to delete an account from all the accounts in the system.
+	 * 
+	 * @param deleteAccount 	The account to be deleted.
+	 */
+	public void deleteAccount(Account deleteAccount) {
+		Account[] newList = new Account[allAccounts.length - 1];
+		for (int i = 0; i < allAccounts.length; i++) {
+			if (!allAccounts[i].equals(deleteAccount)) {
+				newList[i] = allAccounts[i];
+			}
+		}
+		allAccounts = newList;
+	}
+
+	/**
 	 * This method is used to add a instance of an account to the array of all accounts on
 	 * the platform.
 	 * 
