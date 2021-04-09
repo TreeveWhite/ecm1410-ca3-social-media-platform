@@ -20,8 +20,15 @@ public class Account {
     private static final Set<String> usernames = new HashSet<String>();
 
     /**
+     * This is the constructor method for an Account, it takes in the parameter handle which
+     * will be the username of the account. This constructor is for when the user does not
+     * want to add a description on the creation of their account.
+     *  
+     * @param Handle    The username the user wants to use.
      * 
-     * @param handle
+     * @throws IllegalHandleException   Thrown if the handle is already in use.
+     * @throws InvalidHandleException   Thrown if the handle is over 30 characters, 
+     *                                  is empty, or contains white space.
      */
     public Account(String handle) 
                         throws IllegalHandleException,
@@ -43,9 +50,16 @@ public class Account {
     }
 
     /**
+     * This is the constructor method for an Account, it takes in the parameters handle which
+     * will be the username of the account, and the description which will be connected to the
+     * account.
+     *  
+     * @param Handle    The username the user wants to use.
+     * @param description   The description the user wants to display.
      * 
-     * @param Handle
-     * @param description
+     * @throws IllegalHandleException   Thrown if the handle is already in use.
+     * @throws InvalidHandleException   Thrown if the handle is over 30 characters, 
+     *                                  is empty, or contains white space.
      */
     public Account(String handle, String description) 
                             throws IllegalHandleException,
@@ -69,15 +83,29 @@ public class Account {
         this.description = description;
     }
 
-
+    /**
+     * This method returns the handle of the user.
+     * 
+     * @return The handle of the user.
+     */
     public String getHandle() {
         return handle;
     }
 
+    /**
+     * This method returns the description connected to the account.
+     * 
+     * @return The description of the account.
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * This method allows the user to update their account description.
+     * 
+     * @param description The new description that they want to add.
+     */
     public void updateDescription(String description) {
         this.description = description;
     }
