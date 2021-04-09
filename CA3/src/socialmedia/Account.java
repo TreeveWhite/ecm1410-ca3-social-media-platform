@@ -16,15 +16,15 @@ import java.util.Set;
 public class Account {
 
     private String handle;
-
-    private static final Set<String> accounts = new HashSet<String>();
+    private String description;
+    private static final Set<String> usernames = new HashSet<String>();
 
     /**
      * 
      * @param handle
      */
     public Account(String handle) {
-        if (!accounts.add(handle)) {
+        if (!usernames.add(handle)) {
             // throw error
         }
         this.handle = handle;
@@ -36,12 +36,28 @@ public class Account {
      * @param Handle
      * @param description
      */
-    public Account(String Handle, String description) {
-
+    public Account(String handle, String description) {
+        if (!usernames.add(handle)) {
+            // throw error
+        }
+        this.handle = handle;
+        this.description = description;
     }
+
 
     public String getHandle() {
         return handle;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void updateDescription(String handle, String description) {
+        if (!usernames.contains(handle)) {
+            // throw error
+        }
+        this.description = description;
     }
     
 }
