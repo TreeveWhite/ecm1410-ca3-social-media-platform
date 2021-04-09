@@ -141,4 +141,22 @@ public class Post {
     public Account getAuthor() {
         return author;
     }
+
+    /**
+     * This method returns all the endorsement posts of the Post.
+     * 
+     * @return The array of all endorsements.
+     */
+    public Endorsement[] getAllEndorsements() {
+        return allEndorsements;
+    }
+
+    /**
+     * This method returns all the comments associated with the Post
+     * 
+     * @return The array of all comments.
+     */
+    public Comment[] getAllComments() {
+        return allComments;
+    }
 }
