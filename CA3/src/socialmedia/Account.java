@@ -25,8 +25,9 @@ public class Account {
      */
     public Account(String handle) {
         if (!accounts.add(handle)) {
-            this.handle = handle;
+            // throw error
         }
+        this.handle = handle;
 
     }
 
