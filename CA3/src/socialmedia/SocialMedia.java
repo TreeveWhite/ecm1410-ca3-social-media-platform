@@ -73,8 +73,9 @@ public class SocialMedia implements SocialMediaPlatform {
 	public int createAccount(String handle)
 								throws IllegalHandleException,
 								InvalidHandleException {
-		// TODO Auto-generated method stub
-		return 0;
+		Account newAccount = new Account(handle);
+		addAccount(newAccount);
+		return newAccount.getID();
 	}
 
     /**
@@ -271,7 +272,8 @@ public class SocialMedia implements SocialMediaPlatform {
 	}
 
     /**
-     * 
+     * This method is used to delete a post and its endorsement posts from the system as well as
+	 * edit any comment posts to now refer to an empty 
      */
 	@Override
 	public void deletePost(int id) 
