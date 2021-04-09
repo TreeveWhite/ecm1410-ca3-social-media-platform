@@ -8,10 +8,12 @@ import java.util.Set;
  * 
  */
 public class Account {
-
+    
     private String handle;
     private String description;
+    private int id;
     private static final Set<String> usernames = new HashSet<String>();
+    private static int numAccounts = 0;
 
     /**
      * This is the constructor method for an Account, it takes in the parameter handle which
@@ -40,7 +42,7 @@ public class Account {
             throw new InvalidHandleException("The handle cannot be empty.");
         }
         this.handle = handle;
-
+        this.id = numAccounts++;
     }
 
     /**
@@ -59,10 +61,7 @@ public class Account {
                             throws IllegalHandleException,
                             InvalidHandleException {
         if (!usernames.add(handle)) {
-            if (usernames.contains(handle)) {
-                throw new IllegalHandleException("Handle is already in use in the system. ");
-            }
-            
+            throw new IllegalHandleException("Handle is already in use in the system. "); 
         }
         if (handle.length() > 30) {
             throw new InvalidHandleException("Your handle is longer than 30 characters.");
@@ -75,6 +74,7 @@ public class Account {
         }
         this.handle = handle;
         this.description = description;
+        this.id = numAccounts++;
     }
 
     /**
@@ -84,6 +84,10 @@ public class Account {
      */
     public String getHandle() {
         return handle;
+    }
+
+    public int getId() {
+        return id;
     }
 
     /**
