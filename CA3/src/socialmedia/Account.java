@@ -110,9 +110,5 @@ public class Account {
     public void updateDescription(String description) {
         this.description = description;
     }
-
-    public int getId() {
-        return id;
-    }
     
 }
