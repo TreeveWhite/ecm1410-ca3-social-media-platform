@@ -111,11 +111,18 @@ public class SocialMedia implements SocialMediaPlatform {
 	@Override
 	public void removeAccount(int id)
 								throws AccountIDNotRecognisedException {
+		Account deleteAccount = null;
 		for (Account account : allAccounts) {
 			if (account.getId() == id) {
-
+				deleteAccount = account;
 			}
 		}
+
+		if (deleteAccount == null) {
+			throw new AccountIDNotRecognisedException("Account ID used when trying to delete accpunt does not exist in system.");
+		}
+
+		deleteAccount(deleteAccount);
 
 	}
 
