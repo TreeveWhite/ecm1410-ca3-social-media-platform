@@ -1,6 +1,7 @@
 package socialmedia;
 
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Account
@@ -15,7 +16,8 @@ import java.util.HashSet;
 public class Account {
 
     private String handle;
-    private HashSet<String> accounts = new HashSet<String>();
+    
+    private static final Set<String> accounts = new HashSet<String>();
 
     /**
      * 
