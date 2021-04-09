@@ -16,7 +16,7 @@ import java.util.Set;
 public class Account {
 
     private String handle;
-    
+
     private static final Set<String> accounts = new HashSet<String>();
 
     /**
@@ -24,8 +24,7 @@ public class Account {
      * @param handle
      */
     public Account(String handle) {
-        if (!accounts.contains(handle)) {
-            accounts.add(handle);
+        if (!accounts.add(handle)) {
             this.handle = handle;
         }
 
