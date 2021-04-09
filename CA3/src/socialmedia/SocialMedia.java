@@ -293,7 +293,7 @@ public class SocialMedia implements SocialMediaPlatform {
 		}
 
 		for (Comment comment: deletePost.getAllComments()) {
-			
+			comment.changeLinkedPost(new Post());
 		}
 
 		deletePost(deletePost);
