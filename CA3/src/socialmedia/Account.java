@@ -13,8 +13,8 @@ public class Account {
     private String handle;
 
     private String description;
+
     private static final Set<String> usernames = new HashSet<String>();
-    private static int numAccounts = 0;
 
     private static int numAccounts = 0;
 
@@ -89,9 +89,7 @@ public class Account {
         return handle;
     }
 
-    public int getId() {
-        return id;
-    }
+    
 
     /**
      * This method returns the description connected to the account.
@@ -109,6 +107,10 @@ public class Account {
      */
     public void updateDescription(String description) {
         this.description = description;
+    }
+    
+    public int getId() {
+        return id;
     }
     
 }
