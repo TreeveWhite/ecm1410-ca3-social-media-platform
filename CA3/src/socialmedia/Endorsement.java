@@ -33,9 +33,8 @@ public class Endorsement extends Post {
      * @throws PostIDNotRecognisedException     Thrown if post endorsement linked to does not exist.
      */
     public Endorsement(Account author, Post linkedPost)
-                        throws InvalidPostException,
-                        HandleNotRecognisedException {
-        super(author, "EP@"+linkedPost.getAuthor().getHandle()+": "+linkedPost.getMessage());
+                        throws HandleNotRecognisedException {
+        super(author, linkedPost);
         this.linkedPost = linkedPost;
     }
 

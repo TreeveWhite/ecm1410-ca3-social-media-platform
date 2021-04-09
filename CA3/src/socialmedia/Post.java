@@ -54,7 +54,7 @@ public class Post {
      */
     public Post(Account author, String message)
                 throws InvalidPostException,
-                HandleNotRecognisedException{
+                HandleNotRecognisedException {
         if (message.length() > 100) {
             throw new InvalidPostException("Post has a length of more than 100 characters.");
         }
@@ -63,6 +63,16 @@ public class Post {
         }
         this.author = author;
         this.message = message;
+        this.id = numPosts++;
+    }
+
+    public Post(Account author, Post linkedPost) 
+                throws HandleNotRecognisedException {
+        if (author == null) {
+            throw new HandleNotRecognisedException("Account with given handle does not exist.");
+        }
+        this.author = author;
+        this.message = "EP@"+linkedPost.getAuthor().getHandle()+": "+linkedPost.getMessage() ;
         this.id = numPosts++;
     }
 
