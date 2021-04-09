@@ -51,6 +51,21 @@ public class SocialMedia implements SocialMediaPlatform {
 		allPosts = newList;
 	}
 
+	/**
+	 * This method is used to delete a post from all the posts in the system.
+	 * 
+	 * @param deletePost 	The post to be deleted.
+	 */
+	public void deletePost(Post deletePost) {
+		Post[] newList = new Post[allPosts.length - 1];
+		for (int i = 0; i < allPosts.length; i++) {
+			if (!allPosts[i].equals(deletePost)) {
+				newList[i] = allPosts[i];
+			}
+		}
+		allPosts = newList;
+	}
+
     /**
      * 
      */
@@ -261,7 +276,27 @@ public class SocialMedia implements SocialMediaPlatform {
 	@Override
 	public void deletePost(int id) 
 							throws PostIDNotRecognisedException {
-		// TODO Auto-generated method stub
+		Post deletePost = null;
+		for (Post post : allPosts) {
+			if (post.getID() == id) {
+				deletePost = post;
+				break;
+			}
+		}
+
+		if (deletePost == null) {
+			throw new PostIDNotRecognisedException("Post ID of post to be deleted not in the system.");
+		}
+
+		for (Endorsement endorsement : deletePost.getAllEndorsements()) {
+			deletePost(endorsement);
+		}
+
+		for (Comment comment: deletePost.getAllComments()) {
+			
+		}
+
+		deletePost(deletePost);
 
 	}
 
