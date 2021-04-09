@@ -16,7 +16,6 @@ public class Account {
 
     private static final Set<String> usernames = new HashSet<String>();
 
-    private static int numAccounts = 0;
 
     /**
      * This is the constructor method for an Account, it takes in the parameter handle which
