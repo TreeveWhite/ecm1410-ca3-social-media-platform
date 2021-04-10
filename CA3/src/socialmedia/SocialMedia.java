@@ -371,8 +371,21 @@ public class SocialMedia implements SocialMediaPlatform {
 	@Override
 	public String showIndividualPost(int id)
 										throws PostIDNotRecognisedException {
-		// TODO Auto-generated method stub
-		return null;
+		Post wantedPost = null;
+		for (Post post : allPosts) {
+			if (post.getID() == id) {
+				wantedPost = post;
+				break;
+			}
+		}
+
+		if (wantedPost == null) {
+			throw new PostIDNotRecognisedException("Post with given id does not exist in system.");
+		}
+
+		String description = wantedPost.toString();
+
+		return description;
 	}
 
     /**

@@ -171,4 +171,12 @@ public class Post {
     public Comment[] getAllComments() {
         return allComments;
     }
+
+    /**
+     * 
+     */
+    @Override
+    public String toString() {
+        return "ID: "+id+"\nAccount: "+author.getHandle()+"No. endorsements: "+allEndorsements.length+" | No. comments: "+allComments.length+"\n"+message;
+    }
 }
