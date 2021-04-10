@@ -79,6 +79,23 @@ public class Account {
         this.description = description;
         this.id = numAccounts++;
     }
+    public void changeHandle(String newHandle) 
+                            throws IllegalHandleException,
+                            InvalidHandleException {
+        if (!usernames.contains(handle)) {
+            throw new IllegalHandleException("Handle is already in use in the system. "); 
+        }
+        if (handle.length() > 30) {
+            throw new InvalidHandleException("Your handle is longer than 30 characters.");
+        }
+        if (handle.contains(" ")) {
+            throw new InvalidHandleException("The handle cannot contain white space.");
+        }
+        if (handle.equals("")) {
+            throw new InvalidHandleException("The handle cannot be empty.");
+        }
+        this.handle = newHandle;
+    }
 
     /**
      * This method returns the handle of the user.
