@@ -161,7 +161,24 @@ public class SocialMedia implements SocialMediaPlatform {
 				changeHandle = account;
 			}
 		}
-		.changeHandle(newHandle);
+		if (changeHandle == null) {
+			throw new HandleNotRecognisedException("The old account handle used does not exist in the system.");
+		}
+		for (Account account : allAccounts) {
+			if (account.getHandle() == newHandle) {
+				throw new IllegalHandleException("Handle is already in use in the system. ");
+			}
+			if (newHandle.length() > 30) {
+				throw new InvalidHandleException("Your handle is longer than 30 characters.");
+			}
+			if (newHandle.contains(" ")) {
+				throw new InvalidHandleException("The handle cannot contain white space.");
+			}
+			if (newHandle.equals("")) {
+				throw new InvalidHandleException("The handle cannot be empty.");
+			}
+		}
+		changeHandle.changeHandle(newHandle);
 	}
 
     /**
@@ -170,7 +187,10 @@ public class SocialMedia implements SocialMediaPlatform {
 	@Override
 	public void updateAccountDescription(String handle, String description) 
 										throws HandleNotRecognisedException {
-		for (Account : )
+		Account accountDescrip = null;									
+		for (Account account : allAccounts) {
+			if (Account)
+		}
 
 	}
 
