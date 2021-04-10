@@ -169,6 +169,7 @@ public class SocialMedia implements SocialMediaPlatform {
 		for (Account account : allAccounts) {
 			if (account.getHandle() == oldHandle) {
 				changeHandle = account;
+				break;
 			}
 		}
 		if (changeHandle == null) {
