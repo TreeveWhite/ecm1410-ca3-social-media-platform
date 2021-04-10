@@ -121,7 +121,7 @@ public class SocialMedia implements SocialMediaPlatform {
 		if (deleteAccount == null) {
 			throw new AccountIDNotRecognisedException("Account ID used when trying to delete accpunt does not exist in system.");
 		}
-
+		// Delete Posts, Comments, Endorsements associated with Account.
 		deleteAccount(deleteAccount);
 
 	}
@@ -132,7 +132,18 @@ public class SocialMedia implements SocialMediaPlatform {
 	@Override
 	public void removeAccount(String handle)
 								throws HandleNotRecognisedException {
-		// TODO Auto-generated method stub
+		Account deleteAccount = null;
+		for (Account account : allAccounts) {
+			if (account.getHandle() == handle) {
+				deleteAccount = account;
+			}
+		}
+
+		if (deleteAccount == null) {
+			throw new HandleNotRecognisedException("The account handle used when trying to delete account does not exist in system.");
+		}
+		// Delete Posts, Comments, Endorsements associated with Account.
+		deleteAccount(deleteAccount);
 
 	}
 
@@ -144,8 +155,13 @@ public class SocialMedia implements SocialMediaPlatform {
 									throws HandleNotRecognisedException,
 									IllegalHandleException,
 									InvalidHandleException {
-		// TODO Auto-generated method stub
-
+		Account changeHandle = null;
+		for (Account account : allAccounts) {
+			if (account.getHandle() == oldHandle) {
+				changeHandle = account;
+			}
+		}
+		.changeHandle(newHandle);
 	}
 
     /**
@@ -154,7 +170,7 @@ public class SocialMedia implements SocialMediaPlatform {
 	@Override
 	public void updateAccountDescription(String handle, String description) 
 										throws HandleNotRecognisedException {
-		// TODO Auto-generated method stub
+		for (Account : )
 
 	}
 
