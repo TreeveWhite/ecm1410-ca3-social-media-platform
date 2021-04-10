@@ -79,7 +79,18 @@ public class Account {
         this.description = description;
         this.id = numAccounts++;
     }
-    public void changeHandle(String newHandle) {
+    public void changeHandle(String newHandle) 
+                            throws InvalidHandleException {
+        if (newHandle.length() > 30) {
+			throw new InvalidHandleException("Your handle is longer than 30 characters.");
+		}
+		if (newHandle.contains(" ")) {
+			throw new InvalidHandleException("The handle cannot contain white space.");
+		}
+		if (newHandle.equals("")) {
+			throw new InvalidHandleException("The handle cannot be empty.");
+		}
+        
         this.handle = newHandle;
     }
 

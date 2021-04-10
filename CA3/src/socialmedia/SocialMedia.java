@@ -8,6 +8,8 @@ import java.io.IOException;
  * This is an implimentation of the SocialMediaPlatform Interface.
  * <p>
  * 
+ * hello?
+ * 
  */
 public class SocialMedia implements SocialMediaPlatform {
 
@@ -172,23 +174,15 @@ public class SocialMedia implements SocialMediaPlatform {
 				break;
 			}
 		}
-		if (changeHandle == null) {
-			throw new HandleNotRecognisedException("The old account handle used does not exist in the system.");
-		}
+
 		for (Account account : allAccounts) {
 			if (account.getHandle() == newHandle) {
 				throw new IllegalHandleException("Handle is already in use in the system. ");
 			}
 		}
 
-		if (newHandle.length() > 30) {
-			throw new InvalidHandleException("Your handle is longer than 30 characters.");
-		}
-		if (newHandle.contains(" ")) {
-			throw new InvalidHandleException("The handle cannot contain white space.");
-		}
-		if (newHandle.equals("")) {
-			throw new InvalidHandleException("The handle cannot be empty.");
+		if (changeHandle == null) {
+			throw new HandleNotRecognisedException("The old account handle used does not exist in the system.");
 		}
 		
 		changeHandle.changeHandle(newHandle);
