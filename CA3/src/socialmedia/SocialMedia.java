@@ -142,7 +142,13 @@ public class SocialMedia implements SocialMediaPlatform {
 		if (deleteAccount == null) {
 			throw new HandleNotRecognisedException("The account handle used when trying to delete account does not exist in system.");
 		}
+
 		// Delete Posts, Comments, Endorsements associated with Account.
+		for (Post post : allPosts) {
+			if (post.getAuthor() == deleteAccount) {
+				deletePost(post);
+			}
+		}
 		deleteAccount(deleteAccount);
 
 	}
