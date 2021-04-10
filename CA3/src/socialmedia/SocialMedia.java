@@ -8,8 +8,6 @@ import java.io.IOException;
  * This is an implimentation of the SocialMediaPlatform Interface.
  * <p>
  * 
- * hello?
- * 
  */
 public class SocialMedia implements SocialMediaPlatform {
 
