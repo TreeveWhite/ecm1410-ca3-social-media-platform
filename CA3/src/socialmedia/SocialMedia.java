@@ -14,12 +14,12 @@ public class SocialMedia implements SocialMediaPlatform {
 	/**
 	 * This is an array of all accounts on the platform.
 	 */
-	private Account[] allAccounts;
+	private Account[] allAccounts = {};
 
 	/**
 	 * This is an array of all posts on the platform.
 	 */
-	private Post[] allPosts;
+	private Post[] allPosts = {};
 
 	/**
 	 * This method is used to add a instance of an account to the array of all accounts on
