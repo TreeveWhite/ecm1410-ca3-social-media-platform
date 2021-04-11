@@ -29,12 +29,12 @@ public class Post {
     /**
      * This is an array of all the comments the post receieves.
      */
-    private Comment[] allComments;
+    private Comment[] allComments = {};
 
     /**
      * This is an array of all the endorsements the post receieves.
      */
-    private Endorsement[] allEndorsements;
+    private Endorsement[] allEndorsements = {};
 
     /**
      * This is a staic integer value which records the number of accounts in the system starting 
