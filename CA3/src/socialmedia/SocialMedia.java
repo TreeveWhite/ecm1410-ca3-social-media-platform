@@ -1,6 +1,8 @@
 package socialmedia;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Hashtable;
 
 /**
  * <h2>SocialMedia</h2>
@@ -346,10 +348,19 @@ public class SocialMedia implements SocialMediaPlatform {
 	}
 
     /**
-     * This method is used to delete a post and its endorsement posts from the system as well as
-	 * edit any comment posts to now refer to an empty post. 
+     * This method impliments the deletePost method of the MiniSocialMediaPlatform interface 
+	 * by removing the post from the platform. When a post is removed, all
+	 * its endorsements should be removed as well. All replies to this post should
+	 * be updated by replacing the reference to this post by a generic empty post.
+	 * <p>
+	 * The generic empty post message should be "The original content was removed
+	 * from the system and is no longer available.". This empty post is just a
+	 * replacement placeholder for the post which a reply refers to. Empty posts
+	 * should not be linked to any account and cannot be acted upon, i.e., it cannot
+	 * be available for endorsements or replies.
+	 * <p>
 	 * 
-	 * @param id		The id of the post to be displayed.
+	 * @param id	The id of the post to be displayed.
 	 * 
 	 * @throws PostIDNotRecognisedException		Thrown when the post id is not associated with a post on
 	 * 											the platform.
@@ -382,7 +393,7 @@ public class SocialMedia implements SocialMediaPlatform {
 	}
 
     /**
-     * This method impliments the showIndividualPost by finding the Post which coresponds with the
+     * This method impliments the showIndividualPost method by finding the Post which coresponds with the
 	 * given post ID and the getting the descirption from the post's toString method. The format is
 	 * as follows:
 	 * 
@@ -432,48 +443,97 @@ public class SocialMedia implements SocialMediaPlatform {
 	}
 
     /**
-     * 
+     * This method is an implimentation of the getNumberAccounts method in the 
+	 * SocialMediaPlatform interface by returning the current total number of accounts
+	 * present in the platform. Note, this is NOT the total number of accounts ever 
+	 * created since the current total should discount deletions.
+	 * 
+	 * @return The total number of accounts in the platform.
      */
 	@Override
 	public int getNumberOfAccounts() {
-		// TODO Auto-generated method stub
-		return 0;
+		int numAccounts = allAccounts.length;
+		return numAccounts;
 	}
 
     /**
-     * 
+     * This method is an implimentation of the getTotalOriginalPosts method in the
+	 * SocialMediaPlatform interface by returning the current total number of original
+	 * posts (i.e., disregarding endorsements and comments) present in the platform. 
+	 * Note, this is NOT the total number of posts ever created since the current total
+	 * should discount deletions.
+	 * 
+	 * @return The total number of original posts in the platform.
      */
 	@Override
 	public int getTotalOriginalPosts() {
-		// TODO Auto-generated method stub
-		return 0;
+		int numoriginalPosts = 0;
+		for (Post post : allPosts) {
+			if (post.getClass().getName().startsWith("socialmedia.Post")) {
+				numoriginalPosts++;
+			}
+		}
+		return numoriginalPosts;
 	}
 
     /**
-     * 
+     * This method is an implimentation of the getTotalEndorsementPost method in the
+	 * SocialMediaPlatform interface by returning the current total number of endorsement
+	 * posts present in the platform. Note, this is NOT the total number of endorsements 
+	 * ever created since the current total should discount deletions.
+	 * 
+	 * @return The total number of endorsement posts in the platform.
      */
 	@Override
 	public int getTotalEndorsmentPosts() {
-		// TODO Auto-generated method stub
-		return 0;
+		int numEndorsementPosts = 0;
+		for (Post post : allPosts) {
+			if (post.getClass().getName().startsWith("socialmedia.Endorsement")) {
+				numEndorsementPosts++;
+			}
+		}
+		return numEndorsementPosts;
 	}
     
     /**
-     * 
+     * This method is an implimentation of the getTotalCommentPosts method in the 
+	 * SocialMediaPlatform interface by returning the current total number of comments posts
+	 * present in the platform. Note, this is NOT the total number of comments ever created 
+	 * since the current total should discount deletions.
+	 * 
+	 * @return The total number of comments posts in the platform.
      */
 	@Override
 	public int getTotalCommentPosts() {
-		// TODO Auto-generated method stub
-		return 0;
+		int numCommentPosts = 0;
+		for (Post post : allPosts) {
+			if (post.getClass().getName().startsWith("socialmedia.Comment")) {
+				numCommentPosts++;
+			}
+		}
+		return numCommentPosts;
 	}
 
     /**
-     * 
+     * This method implients the getMostEndorsedPost method in the MiniSocialMediaPlatform
+	 * iterface by identifing and returning the post with the most number of endorsements,
+	 * a.k.a. the most popular post.
+	 * 
+	 * @return The ID of the most popular post.
      */
 	@Override
 	public int getMostEndorsedPost() {
-		// TODO Auto-generated method stub
-		return 0;
+		Post mostEndorsed = null;
+		int maxNumEndorsements = 0;
+		int postNumEndorsements;
+		for (Post post : allPosts) {
+			postNumEndorsements = post.getAllEndorsements().length;
+			if (postNumEndorsements >= maxNumEndorsements) {
+				mostEndorsed = post;
+				maxNumEndorsements = postNumEndorsements;
+			}
+		}
+		return mostEndorsed.getID();
 	}
 
     /**
