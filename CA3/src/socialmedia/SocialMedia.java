@@ -347,7 +347,12 @@ public class SocialMedia implements SocialMediaPlatform {
 
     /**
      * This method is used to delete a post and its endorsement posts from the system as well as
-	 * edit any comment posts to now refer to an empty 
+	 * edit any comment posts to now refer to an empty post. 
+	 * 
+	 * @param id		The id of the post to be displayed.
+	 * 
+	 * @throws PostIDNotRecognisedException		Thrown when the post id is not associated with a post on
+	 * 											the platform.
      */
 	@Override
 	public void deletePost(int id) 
@@ -377,7 +382,23 @@ public class SocialMedia implements SocialMediaPlatform {
 	}
 
     /**
-     * 
+     * This method impliments the showIndividualPost by finding the Post which coresponds with the
+	 * given post ID and the getting the descirption from the post's toString method. The format is
+	 * as follows:
+	 * 
+	 * <pre>
+	 * ID: [post ID]
+	 * Account: [account handle]
+	 * No. endorsements: [number of endorsements received by the post] | No. comments: [number of comments received by the post]
+	 * [post message]
+	 * </pre>
+	 * 
+	 * @param id		The id of the post to be displayed.
+	 * 
+	 * @throws PostIDNotRecognisedException		Thrown when the post id is not associated with a post on
+	 * 											the platform.
+	 * 
+	 * @return The description of the Post.
      */
 	@Override
 	public String showIndividualPost(int id)
