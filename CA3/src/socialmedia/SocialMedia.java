@@ -240,7 +240,7 @@ public class SocialMedia implements SocialMediaPlatform {
 				break;
 			}
 		}
-		Post newPost = new Post(author, "message");
+		Post newPost = new Post(author, message);
 		addPost(newPost);
 		return newPost.getID();
 	}
