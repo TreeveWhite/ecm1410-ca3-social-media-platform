@@ -2,6 +2,7 @@ import socialmedia.HandleNotRecognisedException;
 import socialmedia.IllegalHandleException;
 import socialmedia.InvalidHandleException;
 import socialmedia.InvalidPostException;
+import socialmedia.NotActionablePostException;
 import socialmedia.PostIDNotRecognisedException;
 import socialmedia.SocialMedia;
 
@@ -18,7 +19,8 @@ public class SocialMediaTest {
                                             InvalidHandleException, 
                                             HandleNotRecognisedException, 
                                             InvalidPostException, 
-                                            PostIDNotRecognisedException {
+                                            PostIDNotRecognisedException,
+                                            NotActionablePostException {
 
         SocialMedia mySocialMedia = new SocialMedia();
         
@@ -26,7 +28,11 @@ public class SocialMediaTest {
 
         int post1 = mySocialMedia.createPost("test", "First message");
 
+        int post2 = mySocialMedia.commentPost("test", post1, "First Comment");
+
         String post1Desc = mySocialMedia.showIndividualPost(post1);
+
+        System.out.println(mySocialMedia.getTotalOriginalPosts());
 
         System.out.println(post1Desc);
 
