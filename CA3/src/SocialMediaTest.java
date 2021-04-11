@@ -1,3 +1,8 @@
+import socialmedia.HandleNotRecognisedException;
+import socialmedia.IllegalHandleException;
+import socialmedia.InvalidHandleException;
+import socialmedia.InvalidPostException;
+import socialmedia.PostIDNotRecognisedException;
 import socialmedia.SocialMedia;
 
 
@@ -8,25 +13,23 @@ import socialmedia.SocialMedia;
  */
 public class SocialMediaTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws 
+                                            IllegalHandleException, 
+                                            InvalidHandleException, 
+                                            HandleNotRecognisedException, 
+                                            InvalidPostException, 
+                                            PostIDNotRecognisedException {
 
         SocialMedia mySocialMedia = new SocialMedia();
-
-        testCreateAccount1(mySocialMedia, "test");
-
         
-    }
+        int account1 = mySocialMedia.createAccount("test");
 
-    public static boolean testCreateAccount1(SocialMedia socialMedia, String hadle) {
-        try {
-            socialMedia.createAccount("test");
-        } catch (Exception e) {
-            System.out.println("Create Account 1 Failed");
-            return false;
-        }
-        System.out.println("Create Account 1 Passes");
-        return true;
+        int post1 = mySocialMedia.createPost("test", "First message");
+
+        String post1Desc = mySocialMedia.showIndividualPost(post1);
+
+        System.out.println(post1Desc);
+
     }
-    
 
 }
