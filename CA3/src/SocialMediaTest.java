@@ -32,12 +32,15 @@ public class SocialMediaTest {
 
         String post1Desc = mySocialMedia.showIndividualPost(post1);
 
-        System.out.println(mySocialMedia.showAccount("test"));
+        // System.out.println(mySocialMedia.showAccount("test"));
 
-        System.out.println(mySocialMedia.getTotalOriginalPosts());
+        // System.out.println(mySocialMedia.getTotalOriginalPosts());
 
-        System.out.println(post1Desc);
+        // System.out.println(post1Desc);
 
+        StringBuilder test = mySocialMedia.showPostChildrenDetails(post1);
+        
+        System.out.println(test.toString());
     }
 
 }

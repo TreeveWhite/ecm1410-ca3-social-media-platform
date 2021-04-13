@@ -445,11 +445,19 @@ public class SocialMedia implements SocialMediaPlatform {
 
 		postDetails.append(showIndividualPost(id));
 
-		for (Comment comment : wantedPost.getAllComments()) {
-			postDetails.append(showIndividualPost(comment.getID()));
-		}
+		addPostChildrenDetails(postDetails, wantedPost.getAllComments());
 
 		return postDetails;
+	}
+
+	public void addPostChildrenDetails(StringBuilder postDetails, Comment[] comments) 
+										throws PostIDNotRecognisedException {
+		for (Comment comment : comments) {
+			if (comment.getAllComments().length != 0) {
+				addPostChildrenDetails(postDetails, comment.getAllComments());
+			}
+			postDetails.append("\n | > "+showIndividualPost(comment.getID()));
+		}
 	}
 
     /**
