@@ -128,6 +128,13 @@ public class Post {
     }
 
     /**
+     * This method resets the number of posts to 0.
+     */
+    public static void resetNumPosts() {
+        numPosts = 0;
+    }
+
+    /**
      * This method returns the id of the Post.
      * 
      * @return The id of the Post.

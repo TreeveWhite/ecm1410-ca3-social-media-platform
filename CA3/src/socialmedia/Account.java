@@ -79,6 +79,14 @@ public class Account {
         this.description = description;
         this.id = numAccounts++;
     }
+
+    /**
+     * This method resets the number of posts to 0.
+     */
+    public static void resetNumAccounts() {
+        numAccounts = 0;
+    }
+
     /**
      * This method is for allowing the user the change their handle after creating their
      * account. It does all the checks to be sure there are no other users with the new handle.
@@ -102,6 +110,15 @@ public class Account {
         
         this.handle = newHandle;
     }
+    
+    /**
+     * This method allows the user to update their account description.
+     * 
+     * @param description The new description that they want to add.
+     */
+    public void updateDescription(String description) {
+        this.description = description;
+    }
 
     /**
      * This method returns the handle of the user.
@@ -119,15 +136,6 @@ public class Account {
      */
     public String getDescription() {
         return description;
-    }
-
-    /**
-     * This method allows the user to update their account description.
-     * 
-     * @param description The new description that they want to add.
-     */
-    public void updateDescription(String description) {
-        this.description = description;
     }
     
     /**

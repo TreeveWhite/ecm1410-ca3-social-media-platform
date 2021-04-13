@@ -623,14 +623,16 @@ public class SocialMedia implements SocialMediaPlatform {
 	}
 
     /**
-     * 
+     * This metho impliments the erasePlatform method in the MiniSocialMediaPlatform 
+	 * interface by emptying this SocialMediaPlatform of its contents and resets all
+	 * internal counters in Account and Post.
      */
 	@Override
 	public void erasePlatform() {
-		// Remove All Posts
-		// Remove All Accounts
-		// Remove Platform
-
+		allAccounts = new Account[] {};
+		allPosts = new Post[] {};
+		Post.resetNumPosts();
+		Account.resetNumAccounts();
 	}
 
     /**
