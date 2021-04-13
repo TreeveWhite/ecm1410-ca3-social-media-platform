@@ -182,12 +182,7 @@ public class SocialMedia implements SocialMediaPlatform {
 	@Override
 	public void removeAccount(String handle)
 								throws HandleNotRecognisedException {
-		Account deleteAccount = null;
-		for (Account account : allAccounts) {
-			if (account.getHandle() == handle) {
-				deleteAccount = account;
-			}
-		}
+		Account deleteAccount = getAccount(handle);
 
 		if (deleteAccount == null) {
 			throw new HandleNotRecognisedException("The account handle used when trying to delete account does not exist in system.");
@@ -210,13 +205,8 @@ public class SocialMedia implements SocialMediaPlatform {
 									throws HandleNotRecognisedException,
 									IllegalHandleException,
 									InvalidHandleException {
-		Account changeHandle = null;
-		for (Account account : allAccounts) {
-			if (account.getHandle() == oldHandle) {
-				changeHandle = account;
-				break;
-			}
-		}
+
+		Account changeHandle = getAccount(oldHandle);
 
 		for (Account account : allAccounts) {
 			if (account.getHandle() == newHandle) {
@@ -237,13 +227,8 @@ public class SocialMedia implements SocialMediaPlatform {
 	@Override
 	public void updateAccountDescription(String handle, String description) 
 										throws HandleNotRecognisedException {
-		Account accountDescrip = null;									
-		for (Account account : allAccounts) {
-			if (account.getHandle() == handle) {
-				accountDescrip = account;
-				break;
-			}
-		}
+
+		Account accountDescrip = getAccount(handle);
 		if (accountDescrip == null) {
 			throw new HandleNotRecognisedException("The account handle used was not recognised by the system.");
 		}
@@ -254,12 +239,8 @@ public class SocialMedia implements SocialMediaPlatform {
 	@Override
 	public String showAccount(String handle)
 								throws HandleNotRecognisedException {
-		Account wantedAccount = null;
-		for (Account account : allAccounts) {
-			if (account.getHandle() == handle) {
-				wantedAccount = account;
-			}
-		}
+									
+		Account wantedAccount = getAccount(handle);
 
 		if (wantedAccount == null) {
 			throw new HandleNotRecognisedException("The handle used is not recognised in the system");
