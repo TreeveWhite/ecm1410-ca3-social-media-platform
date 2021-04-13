@@ -109,7 +109,25 @@ public class SocialMedia implements SocialMediaPlatform {
 	public Account getAccount(String handle) {
 		Account wantedAccount = null;
 		for (Account account : allAccounts) {
-			if (account.getHandle() == handle) {
+			if (account.getHandle().equals(handle)) {
+				wantedAccount = account;
+				break;
+			}
+		}
+		return wantedAccount;
+	}
+
+	/**
+	 * This method gets an Account from all accounts with the given handle.
+	 * 
+	 * @param handle	The handle of the desired account.
+	 * 
+	 * @return	This returns the account with the matching handle.
+	 */
+	public Account getAccount(int id) {
+		Account wantedAccount = null;
+		for (Account account : allAccounts) {
+			if (account.getId() == id) {
 				wantedAccount = account;
 				break;
 			}
@@ -159,12 +177,7 @@ public class SocialMedia implements SocialMediaPlatform {
 	@Override
 	public void removeAccount(int id)
 								throws AccountIDNotRecognisedException {
-		Account deleteAccount = null;
-		for (Account account : allAccounts) {
-			if (account.getId() == id) {
-				deleteAccount = account;
-			}
-		}
+		Account deleteAccount = getAccount(id);
 
 		if (deleteAccount == null) {
 			throw new AccountIDNotRecognisedException("Account ID used when trying to delete accpunt does not exist in system.");
@@ -298,15 +311,11 @@ public class SocialMedia implements SocialMediaPlatform {
 	public int createPost(String handle, String message)
 							throws HandleNotRecognisedException,
 							InvalidPostException {
-		Account author = null;
-		for (Account account : allAccounts) {
-			if (handle.equals(account.getHandle())) {
-				author = account;
-				break;
-			}
-		}
+		Account author = getAccount(handle);
 		Post newPost = new Post(author, message);
+
 		addPost(newPost);
+		
 		return newPost.getID();
 	}
 
@@ -335,13 +344,7 @@ public class SocialMedia implements SocialMediaPlatform {
 							throws HandleNotRecognisedException,
 							PostIDNotRecognisedException,
 							NotActionablePostException {
-		Account author = null;
-		for (Account account : allAccounts) {
-			if (handle.equals(account.getHandle())) {
-				author = account;
-				break;
-			}
-		}
+		Account author = getAccount(handle);
 		Post linkedPost = getPost(id);
 
 		if (linkedPost == null) {
@@ -379,13 +382,7 @@ public class SocialMedia implements SocialMediaPlatform {
 							PostIDNotRecognisedException,
 							NotActionablePostException,
 							InvalidPostException {
-		Account author = null;
-		for (Account account : allAccounts) {
-			if (handle.equals(account.getHandle())) {
-				author = account;
-				break;
-			}
-		}
+		Account author = getAccount(handle);
 		Post linkedPost = getPost(id);
 
 		if (linkedPost == null) {
