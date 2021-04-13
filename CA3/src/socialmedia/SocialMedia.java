@@ -485,19 +485,23 @@ public class SocialMedia implements SocialMediaPlatform {
 		Post wantedPost = getPost(id);
 
 		postDetails.append(showIndividualPost(id));
+		postDetails.append("\n | ");
 
-		addPostChildrenDetails(postDetails, wantedPost.getAllComments());
+		addPostChildrenDetails(postDetails, wantedPost.getAllComments(), 0);
 
 		return postDetails;
 	}
 
-	public void addPostChildrenDetails(StringBuilder postDetails, Comment[] comments) 
+	public void addPostChildrenDetails(StringBuilder postDetails, Comment[] comments, int numTabs) 
 										throws PostIDNotRecognisedException {
 		for (Comment comment : comments) {
+			String tabs = new String(new char[numTabs]).replace("\0", "     ");
+			postDetails.append("\n"+tabs+" | > "+showIndividualPost(comment.getID()).replace("\n", "\n     "+tabs));
 			if (comment.getAllComments().length != 0) {
-				addPostChildrenDetails(postDetails, comment.getAllComments());
+				tabs = new String(new char[numTabs + 1]).replace("\0", "     ");
+				postDetails.append("\n"+tabs+" | ");
+				addPostChildrenDetails(postDetails, comment.getAllComments(), numTabs+1);
 			}
-			postDetails.append("\n | > "+showIndividualPost(comment.getID()));
 		}
 	}
 

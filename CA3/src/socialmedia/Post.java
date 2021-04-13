@@ -184,6 +184,6 @@ public class Post {
      */
     @Override
     public String toString() {
-        return "ID: "+id+"\nAccount: "+author.getHandle()+"No. endorsements: "+allEndorsements.length+" | No. comments: "+allComments.length+"\n"+message;
+        return "ID: "+id+"\nAccount: "+author.getHandle()+"\nNo. endorsements: "+allEndorsements.length+" | No. comments: "+allComments.length+"\n"+message;
     }
 }

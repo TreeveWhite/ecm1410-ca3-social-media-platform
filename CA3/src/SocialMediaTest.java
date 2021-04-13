@@ -30,6 +30,10 @@ public class SocialMediaTest {
 
         int post2 = mySocialMedia.commentPost("test", post1, "First Comment");
 
+        int post3 = mySocialMedia.commentPost("test", post2, "Sub Comment Comment");
+
+        int post4 = mySocialMedia.commentPost("test", post1, "Second Comment");
+
         String post1Desc = mySocialMedia.showIndividualPost(post1);
 
         // System.out.println(mySocialMedia.showAccount("test"));
