@@ -99,6 +99,23 @@ public class SocialMedia implements SocialMediaPlatform {
 		return wantedPost;
 	}
 	
+	/**
+	 * This method gets an Account from all accounts with the given handle.
+	 * 
+	 * @param handle	The handle of the desired account.
+	 * 
+	 * @return	This returns the account with the matching handle.
+	 */
+	public Account getAccount(String handle) {
+		Account wantedAccount = null;
+		for (Account account : allAccounts) {
+			if (account.getHandle() == handle) {
+				wantedAccount = account;
+				break;
+			}
+		}
+		return wantedAccount;
+	}
 
     /**
      * This method allows the user to create an account with just their handle
