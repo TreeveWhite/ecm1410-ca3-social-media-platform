@@ -545,7 +545,7 @@ public class SocialMedia implements SocialMediaPlatform {
 		return mostEndorsed.getID();
 	}
 
-    
+
 	@Override
 	public int getMostEndorsedAccount() {
 		Account mostEndorsedAccount = null;
