@@ -145,6 +145,7 @@ public class SocialMedia implements SocialMediaPlatform {
 	 * 
 	 * @throws IllegalHandleException	Thrown if the handle is already in use by another user.
 	 * @throws InvalidHandleException	Thrown if the handle is over 30 chars, is empty or has white space.
+	 * 
 	 * @return This returns the id of the new account. 
 	 */
     @Override
@@ -157,10 +158,10 @@ public class SocialMedia implements SocialMediaPlatform {
 	}
 
     /**
-     * Descrip
+     * This method allows the user to create an account with the handle and description.
 	 * 
-	 * @param handle
-	 * @description 
+	 * @param handle	The handle of the new user.
+	 * @param description	The description to be displayed on the profile.
      */
 	@Override
 	public int createAccount(String handle, String description)
@@ -172,7 +173,12 @@ public class SocialMedia implements SocialMediaPlatform {
 	}
 
     /**
-     * 
+     * This method allows the user to delete an account using the account id.
+	 * 
+	 * @param id The id related to account to be deleted.
+	 * 
+	 * @throws AccountIDNotRecognisedException	Thrown when the account id used is not in the system.
+	 * 
      */
 	@Override
 	public void removeAccount(int id)
@@ -193,11 +199,11 @@ public class SocialMedia implements SocialMediaPlatform {
 	}
 
     /**
-     * Descrip
+     * This method allows the user to remove an account using the account handle.
 	 * 
-	 * @param handle
+	 * @param handle	The handle of the account to be removed.
 	 * 
-	 * @throws HandleNotRecognisedException
+	 * @throws HandleNotRecognisedException	Thrown when the provided handle is not in the system.
 	 * 
      */
 	@Override
@@ -219,14 +225,14 @@ public class SocialMedia implements SocialMediaPlatform {
 	}
 
     /**
-     * Descrip
+     * This method allows a user to change their account handle.
 	 * 
-	 * @param oldHandle
-	 * @param newHandle
+	 * @param oldHandle		The handle of the user already in the system.
+	 * @param newHandle		The handle the user would like to change to.
 	 * 
-	 * @throws HandleNotRecognisedException
-	 * @throws IllegalHandleException
-	 * @throws InvalidHandleException
+	 * @throws HandleNotRecognisedException 	Thrown when the old handle is not recognised in the system.
+	 * @throws IllegalHandleException 	Thrown when the new handle is already in use by another account.
+	 * @throws InvalidHandleException 	Thrown when the new handle is over 30 chars, empty, or contains white space.
 	 * 
      */
 	@Override
@@ -251,12 +257,12 @@ public class SocialMedia implements SocialMediaPlatform {
 	}
 
     /**
-     * Descrip
+     * This method allows the user to update their account description.
 	 * 
-	 * @param handle
-	 * @param description
+	 * @param handle	The handle of the account.
+	 * @param description	The new description to be displayed.
 	 * 
-	 * @throws HandleNotRecognisedException
+	 * @throws HandleNotRecognisedException Thrown when the handle is not recognised as belonging to an account in the system.
 	 *	
      */
 	@Override
@@ -271,13 +277,13 @@ public class SocialMedia implements SocialMediaPlatform {
 	}
 
     /**
-	 * Descrip
+	 * This method allows an account selected with the handle to be displayed as a string, giving all the important info.
 	 * 
-	 * @param handle
+	 * @param handle	The handle of the account to be displayed
 	 * 
-	 * @throws HandleNotRecognisedException
+	 * @throws HandleNotRecognisedException Thrown when the handle provided is not in the system.
 	 * 
-	 * @return
+	 * @return Returns the account information as a string.
 	 */
 	@Override
 	public String showAccount(String handle)
@@ -621,7 +627,9 @@ public class SocialMedia implements SocialMediaPlatform {
      */
 	@Override
 	public void erasePlatform() {
-		// TODO Auto-generated method stub
+		// Remove All Posts
+		// Remove All Accounts
+		// Remove Platform
 
 	}
 
