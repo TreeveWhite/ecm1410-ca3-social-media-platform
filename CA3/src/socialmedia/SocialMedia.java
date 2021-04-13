@@ -1,8 +1,6 @@
 package socialmedia;
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Hashtable;
 
 /**
  * <h2>SocialMedia</h2>
