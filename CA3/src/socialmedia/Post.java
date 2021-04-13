@@ -180,7 +180,10 @@ public class Post {
     }
 
     /**
+     * This method returns the post in string format as defined in the MiniSocialMediaPlatform
+     * interface.
      * 
+     * @return The post in string format.
      */
     @Override
     public String toString() {

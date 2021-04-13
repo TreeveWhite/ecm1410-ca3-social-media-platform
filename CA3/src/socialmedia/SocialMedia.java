@@ -474,7 +474,60 @@ public class SocialMedia implements SocialMediaPlatform {
 	}
 
     /**
-     * 
+     * This method impliments the showPostChildrenDetails of the MiniSocialMediaPlatform 
+	 * interface by building a StringBuilder showing the details of the current post and
+	 * all its children posts. The format is as follows:
+	 * 
+	 * See an example:
+	 * 
+	 * <pre>
+	 * ID: 1
+	 * Account: user1
+	 * No. endorsements: 2 | No. comments: 3
+	 * I like examples.
+	 * |
+	 * | > ID: 3
+	 *     Account: user2
+	 *     No. endorsements: 0 | No. comments: 1
+	 *     No more than me...
+	 *     |
+	 *     | > ID: 5
+	 *         Account: user1
+	 *         No. endorsements: 0 | No. comments: 1
+	 *         I can prove!
+	 *         |                                         
+	 *         | > ID: 6                                 
+	 *             Account: user2                        
+	 *             No. endorsements: 0 | No. comments: 0 
+	 *             prove it                    
+	 * | > ID: 4
+	 *     Account: user3
+	 *     No. endorsements: 4 | No. comments: 0
+	 *     Can't you do better than this?
+	 * 
+	 * | > ID: 7
+	 *     Account: user5
+	 *     No. endorsements: 0 | No. comments: 1
+	 *     where is the example?
+	 *     |
+	 *     | > ID: 10
+	 *         Account: user1
+	 *         No. endorsements: 0 | No. comments: 0
+	 *         This is the example!
+	 * </pre>
+	 * 
+	 * 
+	 * @param id 	The id of the post to be shown.
+	 * 
+	 * @throws PostIDNotRecognisedException 	Thrown if the ID does not match to any post in
+	 *                                      	the system.
+	 * @throws NotActionablePostException   	Thrown if the ID refers to an endorsement post.
+	 *                                      	Endorsement posts do not have children
+	 *                                      	since they are not endorsable nor
+	 *                                      	commented.
+	 * 
+	 * @return A formatted StringBuilder containing the details of the post and its
+	 *         children.
      */
 	@Override
 	public StringBuilder showPostChildrenDetails(int id)
@@ -492,6 +545,17 @@ public class SocialMedia implements SocialMediaPlatform {
 		return postDetails;
 	}
 
+	/**
+	 * This is method which uses recurssion to display the posts and all the sub-posts. 
+	 * 
+	 * @param postDetails	The StringBuilder to add the posts details to.
+	 * @param comments		The comments to loop over adding them to the BuildString
+	 * 						and recursively calling the method again for any subcomments.
+	 * @param numTabs		The number of tabs to add for this set of comments.
+	 * 
+	 * @throws PostIDNotRecognisedException 	Thrown if the ID does not match to any post in
+	 *                                      	the system.
+	 */
 	public void addPostChildrenDetails(StringBuilder postDetails, Comment[] comments, int numTabs) 
 										throws PostIDNotRecognisedException {
 		for (Comment comment : comments) {
@@ -627,7 +691,7 @@ public class SocialMedia implements SocialMediaPlatform {
 	}
 
     /**
-     * This metho impliments the erasePlatform method in the MiniSocialMediaPlatform 
+     * This method impliments the erasePlatform method in the MiniSocialMediaPlatform 
 	 * interface by emptying this SocialMediaPlatform of its contents and resets all
 	 * internal counters in Account and Post.
      */
