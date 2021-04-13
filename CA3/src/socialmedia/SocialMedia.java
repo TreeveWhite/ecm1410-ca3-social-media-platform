@@ -139,7 +139,10 @@ public class SocialMedia implements SocialMediaPlatform {
 	}
 
     /**
-     * 
+     * Descrip
+	 * 
+	 * @param handle
+	 * @description 
      */
 	@Override
 	public int createAccount(String handle, String description)
@@ -177,7 +180,12 @@ public class SocialMedia implements SocialMediaPlatform {
 	}
 
     /**
-     * 
+     * Descrip
+	 * 
+	 * @param handle
+	 * 
+	 * @throws HandleNotRecognisedException
+	 * 
      */
 	@Override
 	public void removeAccount(String handle)
@@ -198,7 +206,15 @@ public class SocialMedia implements SocialMediaPlatform {
 	}
 
     /**
-     * 
+     * Descrip
+	 * 
+	 * @param oldHandle
+	 * @param newHandle
+	 * 
+	 * @throws HandleNotRecognisedException
+	 * @throws IllegalHandleException
+	 * @throws InvalidHandleException
+	 * 
      */
 	@Override
 	public void changeAccountHandle(String oldHandle, String newHandle)
@@ -222,7 +238,13 @@ public class SocialMedia implements SocialMediaPlatform {
 	}
 
     /**
-     * 
+     * Descrip
+	 * 
+	 * @param handle
+	 * @param description
+	 * 
+	 * @throws HandleNotRecognisedException
+	 *	
      */
 	@Override
 	public void updateAccountDescription(String handle, String description) 
@@ -235,11 +257,19 @@ public class SocialMedia implements SocialMediaPlatform {
 		accountDescrip.updateDescription(description);
 	}
 
-    
+    /**
+	 * Descrip
+	 * 
+	 * @param handle
+	 * 
+	 * @throws HandleNotRecognisedException
+	 * 
+	 * @return
+	 */
 	@Override
 	public String showAccount(String handle)
 								throws HandleNotRecognisedException {
-									
+
 		Account wantedAccount = getAccount(handle);
 
 		if (wantedAccount == null) {
@@ -554,7 +584,13 @@ public class SocialMedia implements SocialMediaPlatform {
 		return mostEndorsed.getID();
 	}
 
-
+	/**
+	 * This method allows the user to retrieve the account with most endorsements. It loops over every
+	 * account within the system and checks over all their posts to see how many endorsements each user
+	 * has.
+	 * 
+	 * @return It returns the Id of the account with the most endorsements on the platform.
+	 */
 	@Override
 	public int getMostEndorsedAccount() {
 		Account mostEndorsedAccount = null;
