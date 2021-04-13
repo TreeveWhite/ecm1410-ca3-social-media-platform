@@ -545,13 +545,25 @@ public class SocialMedia implements SocialMediaPlatform {
 		return mostEndorsed.getID();
 	}
 
-    /**
-     * 
-     */
+    
 	@Override
 	public int getMostEndorsedAccount() {
-		// TODO Auto-generated method stub
-		return 0;
+		Account mostEndorsedAccount = null;
+		
+		for (Account account : allAccounts) {
+			int maxNumEndorsements = 0;
+			int accountNumEndorsements = 0;
+			for (Post post : allPosts) {
+				if (post.getAuthor() == account) {
+					accountNumEndorsements += post.getAllEndorsements().length;
+				}
+			}
+			if (accountNumEndorsements > maxNumEndorsements) {
+				mostEndorsedAccount = account;
+				maxNumEndorsements = accountNumEndorsements;
+			}
+		}
+		return mostEndorsedAccount.getId();
 	}
 
     /**
