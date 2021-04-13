@@ -124,4 +124,10 @@ public class Account {
     public int getId() {
         return id;
     }
+    public String toString() {
+        if (description == null) {
+            description = "Description has not been set.";
+        }
+        return "Id: " + id + "\nHandle: " + handle + "\nDescription: " + description;
+    }
 }

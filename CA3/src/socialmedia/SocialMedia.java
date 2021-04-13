@@ -207,14 +207,23 @@ public class SocialMedia implements SocialMediaPlatform {
 		accountDescrip.updateDescription(description);
 	}
 
-    /**
-     * 
-     */
+    
 	@Override
 	public String showAccount(String handle)
 								throws HandleNotRecognisedException {
-		// TODO Auto-generated method stub
-		return null;
+		Account wantedAccount = null;
+		for (Account account : allAccounts) {
+			if (account.getHandle() == handle) {
+				wantedAccount = account;
+			}
+		}
+
+		if (wantedAccount == null) {
+			throw new HandleNotRecognisedException("The handle used is not recognised in the system");
+		}
+
+		String accountDisplayed = wantedAccount.toString();
+		return accountDisplayed;
 	}
 
     /**

@@ -24,13 +24,15 @@ public class SocialMediaTest {
 
         SocialMedia mySocialMedia = new SocialMedia();
         
-        int account1 = mySocialMedia.createAccount("test");
+        int account1 = mySocialMedia.createAccount("test", "this is an account all about coding");
 
         int post1 = mySocialMedia.createPost("test", "First message");
 
         int post2 = mySocialMedia.commentPost("test", post1, "First Comment");
 
         String post1Desc = mySocialMedia.showIndividualPost(post1);
+
+        System.out.println(mySocialMedia.showAccount("test"));
 
         System.out.println(mySocialMedia.getTotalOriginalPosts());
 
