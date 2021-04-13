@@ -98,10 +98,20 @@ public class SocialMedia implements SocialMediaPlatform {
 		}
 		return wantedPost;
 	}
+	
 
     /**
-     * 
-     */
+     * This method allows the user to create an account with just their handle
+	 * and it returns their id number afterwards. It does the checks on the handle
+	 * to ensure that there are no other users with the same handle, the handle is 
+	 * under 30 characters, is not empty and finally that it has no white space.
+	 * 
+	 * @param handle	This is the handle the user wants to use
+	 * 
+	 * @throws IllegalHandleException	Thrown if the handle is already in use by another user.
+	 * @throws InvalidHandleException	Thrown if the handle is over 30 chars, is empty or has white space.
+	 * @return This returns the id of the new account. 
+	 */
     @Override
 	public int createAccount(String handle)
 								throws IllegalHandleException,
