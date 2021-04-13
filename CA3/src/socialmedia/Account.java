@@ -79,6 +79,15 @@ public class Account {
         this.description = description;
         this.id = numAccounts++;
     }
+    /**
+     * This method is for allowing the user the change their handle after creating their
+     * account. It does all the checks to be sure there are no other users with the new handle.
+     * 
+     * @param newHandle     This is the handle that the user wants to change to.
+     * 
+     * @throws InvalidHandleException   This exception is thrown if the handle is under 30 characters,
+     *                                  is blank, or contains white space.
+     */
     public void changeHandle(String newHandle) 
                             throws InvalidHandleException {
         if (newHandle.length() > 30) {
@@ -121,9 +130,21 @@ public class Account {
         this.description = description;
     }
     
+    /**
+     * This method returns the id of the user.
+     * 
+     * @return The Id of the account is what gets returned.
+     */
     public int getId() {
         return id;
     }
+
+    /**
+     * This method allows Accounts to be printed out as text that includes
+     * all useful information.
+     * 
+     * @return The string of text is returned. 
+     */
     public String toString() {
         if (description == null) {
             description = "Description has not been set.";
