@@ -81,6 +81,24 @@ public class SocialMedia implements SocialMediaPlatform {
 		allPosts = newList;
 	}
 
+	/**
+	 * This method gets a Post from all posts with the given id.
+	 * 
+	 * @param id 	The id of the wanted post.
+	 * 
+	 * @return wantedPost The post with the given id.
+	 */
+	public Post getPost(int id) {
+		Post wantedPost = null;
+		for (Post post : allPosts) {
+			if (post.getID() == id) {
+				wantedPost = post;
+				break;
+			}
+		}
+		return wantedPost;
+	}
+
     /**
      * 
      */
@@ -286,13 +304,7 @@ public class SocialMedia implements SocialMediaPlatform {
 				break;
 			}
 		}
-		Post linkedPost = null;
-		for (Post post : allPosts) {
-			if (id == post.getID()) {
-				linkedPost = post;
-				break;
-			}
-		}
+		Post linkedPost = getPost(id);
 
 		if (linkedPost == null) {
 			throw new PostIDNotRecognisedException("Post ID is not associated with Post in platform.");
@@ -336,13 +348,7 @@ public class SocialMedia implements SocialMediaPlatform {
 				break;
 			}
 		}
-		Post linkedPost = null;
-		for (Post post : allPosts) {
-			if (id == post.getID()) {
-				linkedPost = post;
-				break;
-			}
-		}
+		Post linkedPost = getPost(id);
 
 		if (linkedPost == null) {
 			throw new PostIDNotRecognisedException("Post ID is not associated with Post in platform.");
@@ -375,13 +381,7 @@ public class SocialMedia implements SocialMediaPlatform {
 	@Override
 	public void deletePost(int id) 
 							throws PostIDNotRecognisedException {
-		Post deletePost = null;
-		for (Post post : allPosts) {
-			if (post.getID() == id) {
-				deletePost = post;
-				break;
-			}
-		}
+		Post deletePost = getPost(id);
 
 		if (deletePost == null) {
 			throw new PostIDNotRecognisedException("Post ID of post to be deleted not in the system.");
@@ -421,13 +421,7 @@ public class SocialMedia implements SocialMediaPlatform {
 	@Override
 	public String showIndividualPost(int id)
 										throws PostIDNotRecognisedException {
-		Post wantedPost = null;
-		for (Post post : allPosts) {
-			if (post.getID() == id) {
-				wantedPost = post;
-				break;
-			}
-		}
+		Post wantedPost = getPost(id);
 
 		if (wantedPost == null) {
 			throw new PostIDNotRecognisedException("Post with given id does not exist in system.");
@@ -445,8 +439,17 @@ public class SocialMedia implements SocialMediaPlatform {
 	public StringBuilder showPostChildrenDetails(int id)
 												throws PostIDNotRecognisedException,
 												NotActionablePostException {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder postDetails = new StringBuilder();
+
+		Post wantedPost = getPost(id);
+
+		postDetails.append(showIndividualPost(id));
+
+		for (Comment comment : wantedPost.getAllComments()) {
+			postDetails.append(showIndividualPost(comment.getID()));
+		}
+
+		return postDetails;
 	}
 
     /**
