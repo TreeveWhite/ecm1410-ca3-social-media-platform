@@ -98,10 +98,37 @@ public class SocialMedia implements SocialMediaPlatform {
 		}
 		return wantedPost;
 	}
+	
+	/**
+	 * This method gets an Account from all accounts with the given handle.
+	 * 
+	 * @param handle	The handle of the desired account.
+	 * 
+	 * @return	This returns the account with the matching handle.
+	 */
+	public Account getAccount(String handle) {
+		Account wantedAccount = null;
+		for (Account account : allAccounts) {
+			if (account.getHandle() == handle) {
+				wantedAccount = account;
+				break;
+			}
+		}
+		return wantedAccount;
+	}
 
     /**
-     * 
-     */
+     * This method allows the user to create an account with just their handle
+	 * and it returns their id number afterwards. It does the checks on the handle
+	 * to ensure that there are no other users with the same handle, the handle is 
+	 * under 30 characters, is not empty and finally that it has no white space.
+	 * 
+	 * @param handle	This is the handle the user wants to use
+	 * 
+	 * @throws IllegalHandleException	Thrown if the handle is already in use by another user.
+	 * @throws InvalidHandleException	Thrown if the handle is over 30 chars, is empty or has white space.
+	 * @return This returns the id of the new account. 
+	 */
     @Override
 	public int createAccount(String handle)
 								throws IllegalHandleException,
@@ -155,12 +182,7 @@ public class SocialMedia implements SocialMediaPlatform {
 	@Override
 	public void removeAccount(String handle)
 								throws HandleNotRecognisedException {
-		Account deleteAccount = null;
-		for (Account account : allAccounts) {
-			if (account.getHandle() == handle) {
-				deleteAccount = account;
-			}
-		}
+		Account deleteAccount = getAccount(handle);
 
 		if (deleteAccount == null) {
 			throw new HandleNotRecognisedException("The account handle used when trying to delete account does not exist in system.");
@@ -183,13 +205,8 @@ public class SocialMedia implements SocialMediaPlatform {
 									throws HandleNotRecognisedException,
 									IllegalHandleException,
 									InvalidHandleException {
-		Account changeHandle = null;
-		for (Account account : allAccounts) {
-			if (account.getHandle() == oldHandle) {
-				changeHandle = account;
-				break;
-			}
-		}
+
+		Account changeHandle = getAccount(oldHandle);
 
 		for (Account account : allAccounts) {
 			if (account.getHandle() == newHandle) {
@@ -210,13 +227,8 @@ public class SocialMedia implements SocialMediaPlatform {
 	@Override
 	public void updateAccountDescription(String handle, String description) 
 										throws HandleNotRecognisedException {
-		Account accountDescrip = null;									
-		for (Account account : allAccounts) {
-			if (account.getHandle() == handle) {
-				accountDescrip = account;
-				break;
-			}
-		}
+
+		Account accountDescrip = getAccount(handle);
 		if (accountDescrip == null) {
 			throw new HandleNotRecognisedException("The account handle used was not recognised by the system.");
 		}
@@ -227,12 +239,8 @@ public class SocialMedia implements SocialMediaPlatform {
 	@Override
 	public String showAccount(String handle)
 								throws HandleNotRecognisedException {
-		Account wantedAccount = null;
-		for (Account account : allAccounts) {
-			if (account.getHandle() == handle) {
-				wantedAccount = account;
-			}
-		}
+									
+		Account wantedAccount = getAccount(handle);
 
 		if (wantedAccount == null) {
 			throw new HandleNotRecognisedException("The handle used is not recognised in the system");
