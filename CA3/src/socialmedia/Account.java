@@ -9,6 +9,11 @@ import java.util.Set;
  */
 public class Account implements Serializable {
 
+    /**
+     * The SerialVersionUID which represents the class version.
+     */
+    private static final long serialVersionUID = 8225229775036968396L;
+
     private int id;
 
     private String handle;

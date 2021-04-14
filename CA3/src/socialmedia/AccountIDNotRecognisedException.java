@@ -10,6 +10,11 @@ package socialmedia;
 public class AccountIDNotRecognisedException extends Exception {
 
 	/**
+	 * The SerialVersionUID which represents the class version.
+	 */
+	private static final long serialVersionUID = -819401439156463747L;
+
+	/**
 	 * Constructs an instance of the exception with no message
 	 */
 	public AccountIDNotRecognisedException() {

@@ -11,6 +11,11 @@ package socialmedia;
 public class Comment extends Post{
 
     /**
+     * The SerialVersionUID which represents the class version.
+     */
+    private static final long serialVersionUID = -7709952939872791336L;
+    
+    /**
      * This is the post the comment is associated with.
      */
     private Post linkedPost;

@@ -12,7 +12,7 @@ import socialmedia.SocialMedia;
 /**
  * SocialMediaTest
  * 
- * This file is used to test our social media package and file
+ * This file is used to test our social media package and file.
  */
 public class SocialMediaTest {
 

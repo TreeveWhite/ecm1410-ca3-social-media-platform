@@ -14,6 +14,11 @@ import java.io.Serializable;
 public class Post implements Serializable {
 
     /**
+     * The SerialVersionUID which represents the class version.
+     */
+    private static final long serialVersionUID = -6471649759148628316L;
+
+    /**
      * This is the unique sequencial identifier of the post.
      */
     private int id;

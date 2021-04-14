@@ -12,6 +12,11 @@ package socialmedia;
 public class Endorsement extends Post {
 
     /**
+     * The SerialVersionUID which represents the class version.
+     */
+    private static final long serialVersionUID = 8178673147762741699L;
+    
+    /**
      * This is the post the comment is associated with.
      */
     private Post linkedPost;

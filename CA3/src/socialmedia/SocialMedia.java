@@ -16,6 +16,11 @@ import java.io.ObjectOutputStream;
 public class SocialMedia implements SocialMediaPlatform {
 
 	/**
+	 * The SerialVersionUID which represents the class version.
+	 */
+	private static final long serialVersionUID = -5306444784233657143L;
+
+	/**
 	 * This is an array of all accounts on the platform.
 	 */
 	private Account[] allAccounts = {};
