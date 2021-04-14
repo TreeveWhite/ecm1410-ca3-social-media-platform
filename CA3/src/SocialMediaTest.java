@@ -26,33 +26,69 @@ public class SocialMediaTest {
 
         SocialMedia mySocialMedia = new SocialMedia();
         
-        // int account1 = mySocialMedia.createAccount("test", "this is an account all about coding");
+        //int account0 = mySocialMedia.createAccount("jstall", "this is an account all about coding");
+        
+        //int account1 = mySocialMedia.createAccount("twhite");
 
-        // int post1 = mySocialMedia.createPost("test", "First message");
+        // int account2 = mySocialMedia.createAccount("boyIReallyHopeThisHandleIsn'tTooLong");//testing invalid handle execption
+        
+        //System.out.println(account0);
 
-        // int post2 = mySocialMedia.commentPost("test", post1, "First Comment");
+        //System.out.println(account1);
 
-        // int post3 = mySocialMedia.commentPost("test", post2, "Sub Comment Comment");
+        //System.out.println(account2);
 
-        // int post4 = mySocialMedia.commentPost("test", post3, "Second Sub Comment");
+        //System.out.println(mySocialMedia.showAccount("jstall"));
 
-        // int post5 = mySocialMedia.commentPost("test", post1, "Second Comment");
+        //System.out.println(mySocialMedia.showAccount("twhite"));
+
+        //mySocialMedia.updateAccountDescription("twhite", "i always longed to haved a description...");
+
+        //System.out.println(mySocialMedia.showAccount("twhite"));
+
+        //System.out.println(mySocialMedia.showAccount("notACorrectHandle")); //testing that errors get thrown
+
+        //int post1 = mySocialMedia.createPost("jstall", "First message");
+
+        //System.out.println(mySocialMedia.showIndividualPost(post1));
+
+        //int post2 = mySocialMedia.commentPost("twhite", post1, "First Comment");
+
+        //System.out.println(mySocialMedia.showIndividualPost(post2));
+
+        //int post3 = mySocialMedia.commentPost("jstall", post2, "Sub Comment Comment");
+
+        //int post4 = mySocialMedia.commentPost("twhite", post3, "Second Sub Comment");
+
+
+        //int post5 = mySocialMedia.commentPost("twhite", post1, "Second Comment");
+
+
+        //int endorse1 = mySocialMedia.endorsePost("twhite", post1);
+        
+        
 
         // String post1Desc = mySocialMedia.showIndividualPost(post2);
 
-        // System.out.println(mySocialMedia.showAccount("test"));
+        //System.out.println();
+
+        //System.out.println(mySocialMedia.showIndividualPost(post1));
 
         // System.out.println(mySocialMedia.getTotalOriginalPosts());
 
         // System.out.println(post1Desc);
 
         // StringBuilder test = mySocialMedia.showPostChildrenDetails(post1);
-        
-        // System.out.println(test.toString());
 
-        mySocialMedia.loadPlatform("test.ser");
+        //mySocialMedia.savePlatform("test.ser");
 
-        System.out.println(mySocialMedia.showPostChildrenDetails(0).toString());
+        //mySocialMedia.loadPlatform("test.ser");
+
+        //System.out.println(mySocialMedia.showAccount("jstall"));
+
+        //System.out.println(mySocialMedia.showAccount("twhite"));
+
+        //System.out.println(mySocialMedia.showPostChildrenDetails(0).toString());
 
     }
 
