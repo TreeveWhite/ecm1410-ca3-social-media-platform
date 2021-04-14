@@ -10,6 +10,10 @@ import java.io.Serializable;
  * A Post had a unique sequencial ID, a message up to 100 characters long, an 
  * author (Account) it is associated with, a list of all comments it recieves 
  * and a list of all endorsements it recieves.
+ * 
+ * @author 700008432
+ * @author 690033172
+ * @version 1.0
  */
 public class Post implements Serializable {
 

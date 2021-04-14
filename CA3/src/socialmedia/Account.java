@@ -6,6 +6,11 @@ import java.util.Set;
 
 /**
  * <h2>Account</h2>
+ * 
+ * 
+ * @author 700008432
+ * @author 690033172
+ * @version 1.0
  */
 public class Account implements Serializable {
 

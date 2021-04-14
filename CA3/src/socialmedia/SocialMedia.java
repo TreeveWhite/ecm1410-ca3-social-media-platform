@@ -12,6 +12,9 @@ import java.io.ObjectOutputStream;
  * This is an implimentation of the SocialMediaPlatform Interface.
  * <p>
  * 
+ * @author 700008432
+ * @author 690033172
+ * @version 1.0
  */
 public class SocialMedia implements SocialMediaPlatform {
 

@@ -8,6 +8,10 @@ package socialmedia;
  * and methods. In addition to these, an Endorsement has a linkedPost attribute which refers
  * to the Post which the endorsement has been placed on and replicates the message of the post
  * it is associated with.
+ * 
+ * @author 700008432
+ * @author 690033172
+ * @version 1.0
  */
 public class Endorsement extends Post {
 
