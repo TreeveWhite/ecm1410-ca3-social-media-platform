@@ -708,7 +708,14 @@ public class SocialMedia implements SocialMediaPlatform {
 	}
 
     /**
-     * 
+     * This method impliments the savePlatform method in the MiniSocialMediaPlatform 
+	 * interace by saving this SocialMediaPlatform's contents into a serialised file, with
+	 * the filename given in the argument.
+	 *
+	 * @param filename The path and name of the file to be saved to.
+	 * 
+	 * @throws IOException Thrown if there is a problem experienced when trying to save the
+	 *                     store contents to the file.
      */
 	@Override
 	public void savePlatform(String filename) 
@@ -722,7 +729,16 @@ public class SocialMedia implements SocialMediaPlatform {
 	}
 
     /**
-     * 
+     * This method impliments the loadPlatform method in the MiniSocialMediaPlatform 
+	 * interface by loading and replacing this SocialMediaPlatform's contents with the
+	 * serialised contents stored in the file given in the argument.
+	 *
+	 * @param filename The location of the file to be loaded.
+	 * 
+	 * @throws IOException            Thrown if there is a problem experienced when trying
+	 *                                to load the store contents from the file.
+	 * @throws ClassNotFoundException Thrown if required class files cannot be found when
+	 *                                loading.
      */
 	@Override
 	public void loadPlatform(String filename) 
