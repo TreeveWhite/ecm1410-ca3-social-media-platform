@@ -1,6 +1,10 @@
 package socialmedia;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  * <h2>SocialMedia</h2>
@@ -709,8 +713,12 @@ public class SocialMedia implements SocialMediaPlatform {
 	@Override
 	public void savePlatform(String filename) 
 							throws IOException {
-		// TODO Auto-generated method stub
-
+		FileOutputStream fileOut = new FileOutputStream(filename);
+		ObjectOutputStream out = new ObjectOutputStream(fileOut);
+		out.writeObject(this.allAccounts);
+		out.writeObject(this.allPosts);
+		out.close();
+		fileOut.close();
 	}
 
     /**
@@ -720,7 +728,11 @@ public class SocialMedia implements SocialMediaPlatform {
 	public void loadPlatform(String filename) 
 							throws IOException,
 							ClassNotFoundException {
-		// TODO Auto-generated method stub
-
+		FileInputStream fileIn = new FileInputStream(filename);
+		ObjectInputStream in = new ObjectInputStream(fileIn);
+		allAccounts = (Account[]) in.readObject();
+		allPosts = (Post[]) in.readObject();
+		in.close();
+		fileIn.close();
 	}
 }

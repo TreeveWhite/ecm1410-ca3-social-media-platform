@@ -1,12 +1,13 @@
 package socialmedia;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * <h2>Account</h2>
  */
-public class Account {
+public class Account implements Serializable {
 
     private int id;
 

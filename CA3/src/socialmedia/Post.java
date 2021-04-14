@@ -1,5 +1,7 @@
 package socialmedia;
 
+import java.io.Serializable;
+
 /**
  * <h2>Post</h1>
  * 
@@ -9,7 +11,7 @@ package socialmedia;
  * author (Account) it is associated with, a list of all comments it recieves 
  * and a list of all endorsements it recieves.
  */
-public class Post {
+public class Post implements Serializable {
 
     /**
      * This is the unique sequencial identifier of the post.
