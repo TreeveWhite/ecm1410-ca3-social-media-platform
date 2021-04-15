@@ -80,11 +80,11 @@ public class SocialMediaTest {
 
         // System.out.println(post1Desc);
 
-        // mySocialMedia.removeAccount("jstall");
+        mySocialMedia.removeAccount("jstall");
 
-        mySocialMedia.deletePost(post3);
+        // mySocialMedia.deletePost(post3);
 
-        StringBuilder test = mySocialMedia.showPostChildrenDetails(post1);
+        StringBuilder test = mySocialMedia.showPostChildrenDetails(post2);
 
         System.out.println(test);
 

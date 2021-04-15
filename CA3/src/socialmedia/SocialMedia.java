@@ -55,9 +55,10 @@ public class SocialMedia implements SocialMediaPlatform {
 	 */
 	public void deleteAccountFromAllAccounts(Account deleteAccount) {
 		Account[] newList = new Account[allAccounts.length - 1];
-		for (int i = 0; i < allAccounts.length; i++) {
+		for (int i = 0, j = 0; i < allAccounts.length; i++) {
 			if (!allAccounts[i].equals(deleteAccount)) {
-				newList[i] = allAccounts[i];
+				newList[j] = allAccounts[i];
+				j++;
 			}
 		}
 		allAccounts = newList;
@@ -231,12 +232,14 @@ public class SocialMedia implements SocialMediaPlatform {
 		}
 
 		for (Post post : allPosts) {
-			if (post.getAuthor() == deleteAccount) {
-				deletePostFromAllPosts(post);
+			if (post.getAuthor().equals(deleteAccount)) {
+				for (Endorsement endorsement : post.getAllEndorsements()) {
+					deletePostFromAllPosts(endorsement);
+				}
+				post.empty();
 			}
 		}
 		deleteAccountFromAllAccounts(deleteAccount);
-
 	}
 
     /**
@@ -565,7 +568,6 @@ public class SocialMedia implements SocialMediaPlatform {
 
 		postDetails.append(showIndividualPost(id));
 		postDetails.append("\n | ");
-		System.out.println("x");
 		addPostChildrenDetails(postDetails, wantedPost.getAllComments(), 0);
 
 		return postDetails;
