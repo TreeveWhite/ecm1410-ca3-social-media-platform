@@ -19,14 +19,31 @@ public class Account implements Serializable {
      */
     private static final long serialVersionUID = 8225229775036968396L;
 
+    /**
+     * This is the unique sequential identifier of the account.
+     */
     private int id;
 
+    /**
+     * This is the handle attributed to the account.
+     */
     private String handle;
 
+    /**
+     * This is the description that the user can add to their account.
+     */
     private String description;
 
+    /**
+     * This is the static set of usernames in the system, it contains
+     * all the handles of each user within the system.
+     */
     private static final Set<String> usernames = new HashSet<String>();
 
+    /**
+     * This is a static integer value which records the number of accounts
+     * in the system starting at 0.
+     */
     private static int numAccounts = 0;
 
     /**
