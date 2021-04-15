@@ -171,6 +171,8 @@ public class SocialMedia implements SocialMediaPlatform {
 
     /**
      * This method allows the user to create an account with the handle and description.
+	 * It does checks to ensure the handle is valid and not already in use within the
+	 * system.
 	 * 
 	 * @param handle	The handle of the new user.
 	 * @param description	The description to be displayed on the profile.
@@ -203,7 +205,7 @@ public class SocialMedia implements SocialMediaPlatform {
 		
 		for (Post post : allPosts) {
 			if (post.getAuthor() == deleteAccount) {
-				deletePost(post);
+				deletePost(post); //deletes each post before removing the account.
 			}
 		}
 		deleteAccount(deleteAccount);
