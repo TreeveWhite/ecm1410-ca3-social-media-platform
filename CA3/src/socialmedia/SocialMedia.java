@@ -39,7 +39,7 @@ public class SocialMedia implements SocialMediaPlatform {
 	 * 
 	 * @param newAccount	The new account to be added to the array.
 	 */
-	public void addAccount(Account newAccount) {
+	public void addAccountToAllAccounts(Account newAccount) {
 		Account[] newList = new Account[allAccounts.length + 1];
 		for (int i = 0; i < allAccounts.length; i++) {
 			newList[i] = allAccounts[i];
@@ -53,7 +53,7 @@ public class SocialMedia implements SocialMediaPlatform {
 	 * 
 	 * @param deleteAccount 	The account to be deleted.
 	 */
-	public void deleteAccount(Account deleteAccount) {
+	public void deleteAccountFromAllAccounts(Account deleteAccount) {
 		Account[] newList = new Account[allAccounts.length - 1];
 		for (int i = 0; i < allAccounts.length; i++) {
 			if (!allAccounts[i].equals(deleteAccount)) {
@@ -69,7 +69,7 @@ public class SocialMedia implements SocialMediaPlatform {
 	 * 
 	 * @param newAccount	The new account to be added to the array.
 	 */
-	public void addPost(Post newPost) {
+	public void addPostToAllPosts(Post newPost) {
 		Post[] newList = new Post[allPosts.length + 1];
 		for (int i = 0; i < allPosts.length; i++) {
 			newList[i] = allPosts[i];
@@ -83,11 +83,12 @@ public class SocialMedia implements SocialMediaPlatform {
 	 * 
 	 * @param deletePost 	The post to be deleted.
 	 */
-	public void deletePost(Post deletePost) {
+	public void deletePostFromAllPosts(Post deletePost) {
 		Post[] newList = new Post[allPosts.length - 1];
-		for (int i = 0; i < allPosts.length; i++) {
+		for (int i = 0, j = 0; i < allPosts.length; i++) {
 			if (!allPosts[i].equals(deletePost)) {
-				newList[i] = allPosts[i];
+				newList[j] = allPosts[i];
+				j++;
 			}
 		}
 		allPosts = newList;
@@ -165,7 +166,7 @@ public class SocialMedia implements SocialMediaPlatform {
 								throws IllegalHandleException,
 								InvalidHandleException {
 		Account newAccount = new Account(handle);
-		addAccount(newAccount);
+		addAccountToAllAccounts(newAccount);
 		return newAccount.getId();
 	}
 
@@ -182,7 +183,7 @@ public class SocialMedia implements SocialMediaPlatform {
 								throws IllegalHandleException,
 								InvalidHandleException {
 		Account newAccount = new Account(handle, description);
-		addAccount(newAccount);
+		addAccountToAllAccounts(newAccount);
 		return newAccount.getId();
 	}
 
@@ -205,10 +206,10 @@ public class SocialMedia implements SocialMediaPlatform {
 		
 		for (Post post : allPosts) {
 			if (post.getAuthor() == deleteAccount) {
-				deletePost(post); //deletes each post before removing the account.
+				deletePostFromAllPosts(post); //deletes each post before removing the account.
 			}
 		}
-		deleteAccount(deleteAccount);
+		deleteAccountFromAllAccounts(deleteAccount);
 
 	}
 
@@ -231,10 +232,10 @@ public class SocialMedia implements SocialMediaPlatform {
 
 		for (Post post : allPosts) {
 			if (post.getAuthor() == deleteAccount) {
-				deletePost(post);
+				deletePostFromAllPosts(post);
 			}
 		}
-		deleteAccount(deleteAccount);
+		deleteAccountFromAllAccounts(deleteAccount);
 
 	}
 
@@ -334,7 +335,7 @@ public class SocialMedia implements SocialMediaPlatform {
 		Account author = getAccount(handle);
 		Post newPost = new Post(author, message);
 
-		addPost(newPost);
+		addPostToAllPosts(newPost);
 		
 		return newPost.getID();
 	}
@@ -377,7 +378,7 @@ public class SocialMedia implements SocialMediaPlatform {
 
 		Endorsement newEndorsement = new Endorsement(author, linkedPost);
 		linkedPost.addEndorsement(newEndorsement);
-		addPost(newEndorsement);
+		addPostToAllPosts(newEndorsement);
 		return newEndorsement.getID();
 	}
 
@@ -419,7 +420,7 @@ public class SocialMedia implements SocialMediaPlatform {
 
 		Comment newComment = new Comment(author, message, linkedPost);
 		linkedPost.addComment(newComment);
-		addPost(newComment);
+		addPostToAllPosts(newComment);
 		return newComment.getID();
 	}
 
@@ -451,15 +452,10 @@ public class SocialMedia implements SocialMediaPlatform {
 		}
 
 		for (Endorsement endorsement : deletePost.getAllEndorsements()) {
-			deletePost(endorsement);
+			deletePostFromAllPosts(endorsement);
 		}
 
-		for (Comment comment: deletePost.getAllComments()) {
-			comment.changeLinkedPost(new Post());
-		}
-
-		deletePost(deletePost);
-
+		deletePost.empty();
 	}
 
     /**
@@ -559,9 +555,17 @@ public class SocialMedia implements SocialMediaPlatform {
 
 		Post wantedPost = getPost(id);
 
+		if (wantedPost == null) {
+			throw new PostIDNotRecognisedException("Post with given id does not exist in system.");
+		}
+
+		if (!wantedPost.getIsActionable()) {
+			throw new NotActionablePostException("Attempting to view non-actionable post.");
+		}
+
 		postDetails.append(showIndividualPost(id));
 		postDetails.append("\n | ");
-
+		System.out.println("x");
 		addPostChildrenDetails(postDetails, wantedPost.getAllComments(), 0);
 
 		return postDetails;

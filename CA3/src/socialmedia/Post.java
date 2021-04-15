@@ -104,19 +104,6 @@ public class Post implements Serializable {
     }
 
     /**
-     * This is the constructor method for an empty Post, it takes in no parameters and is a replacement 
-     * placeholder for a post. It does not refer to an account and cannot be acted upon. The message
-     * contained in an empty post is "The original content was removed from the system and is no longer 
-     * available.".
-     */
-    public Post() {
-        this.author = null;
-        this.message = "The original content was removed from the system and is no longer available.";
-        this.id = numPosts++;
-        this.isActionable = false;
-    }
-
-    /**
      * This methods adds a new comment to the post's list of comments it has recieved.
      * 
      * @param newComment    The new comment to add to its list.
@@ -142,6 +129,12 @@ public class Post implements Serializable {
         }
         newList[allEndorsements.length] = newEndorsement;
         allEndorsements = newList;
+    }
+
+    public void empty() {
+        this.message = "The original content was removed from the system and is no longer available.";
+        this.author = null;
+        this.isActionable = false;
     }
 
     /**
@@ -213,6 +206,10 @@ public class Post implements Serializable {
      */
     @Override
     public String toString() {
-        return "ID: "+id+"\nAccount: "+author.getHandle()+"\nNo. endorsements: "+allEndorsements.length+" | No. comments: "+allComments.length+"\n"+message;
+        String name = "";
+        if (!(author == null)){
+            name += author.getHandle();
+        }
+        return "ID: "+id+"\nAccount: "+name+"\nNo. endorsements: "+allEndorsements.length+" | No. comments: "+allComments.length+"\n"+message;
     }
 }
