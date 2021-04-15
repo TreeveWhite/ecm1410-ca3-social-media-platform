@@ -64,7 +64,7 @@ public class SocialMedia implements SocialMediaPlatform {
 	}
 
 	/**
-	 * This method is used to add a instance of an account to the array of all accounts on
+	 * This method is used to add a instance of a post to the array of all accounts on
 	 * the platform.
 	 * 
 	 * @param newAccount	The new account to be added to the array.
@@ -369,6 +369,10 @@ public class SocialMedia implements SocialMediaPlatform {
 			throw new PostIDNotRecognisedException("Post ID is not associated with Post in platform.");
 		}
 
+		if (!linkedPost.getIsActionable()) {
+			throw new NotActionablePostException("Attempting to endorse a non-actionable post.");
+		}
+
 		Endorsement newEndorsement = new Endorsement(author, linkedPost);
 		linkedPost.addEndorsement(newEndorsement);
 		addPost(newEndorsement);
@@ -405,6 +409,10 @@ public class SocialMedia implements SocialMediaPlatform {
 
 		if (linkedPost == null) {
 			throw new PostIDNotRecognisedException("Post ID is not associated with Post in platform.");
+		}
+
+		if (!linkedPost.getIsActionable()) {
+			throw new NotActionablePostException("Attempting to comment on a non-actionable post.");
 		}
 
 		Comment newComment = new Comment(author, message, linkedPost);

@@ -47,8 +47,11 @@ public class Post implements Serializable {
      */
     private Endorsement[] allEndorsements = {};
 
+
+    private boolean isActionable;
+
     /**
-     * This is a staic integer value which records the number of accounts in the system starting 
+     * This is a staic integer value which records the number of posts in the system starting 
      * at 0, it is used to get the next sequencial ID for when a post is created.
      */
     private static int numPosts = 0;
@@ -76,6 +79,7 @@ public class Post implements Serializable {
         this.author = author;
         this.message = message;
         this.id = numPosts++;
+        this.isActionable = true;
     }
 
     /**
@@ -96,6 +100,7 @@ public class Post implements Serializable {
         this.author = author;
         this.message = "EP@"+linkedPost.getAuthor().getHandle()+": "+linkedPost.getMessage();
         this.id = numPosts++;
+        this.isActionable = false;
     }
 
     /**
@@ -108,6 +113,7 @@ public class Post implements Serializable {
         this.author = null;
         this.message = "The original content was removed from the system and is no longer available.";
         this.id = numPosts++;
+        this.isActionable = false;
     }
 
     /**
@@ -188,6 +194,15 @@ public class Post implements Serializable {
      */
     public Comment[] getAllComments() {
         return allComments;
+    }
+
+    /**
+     * This method returns if the post can be acted upon.
+     * 
+     * @return isActionable If the post can be acted upon.
+     */
+    public boolean getIsActionable() {
+        return isActionable;
     }
 
     /**
