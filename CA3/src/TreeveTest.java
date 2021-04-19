@@ -1,5 +1,6 @@
 import java.io.IOException;
 
+import socialmedia.AccountIDNotRecognisedException;
 import socialmedia.HandleNotRecognisedException;
 import socialmedia.IllegalHandleException;
 import socialmedia.InvalidHandleException;
@@ -22,80 +23,33 @@ public class TreeveTest {
                                             HandleNotRecognisedException, 
                                             InvalidPostException, 
                                             PostIDNotRecognisedException,
-                                            NotActionablePostException, IOException, ClassNotFoundException {
+                                            NotActionablePostException,
+                                            IOException,
+                                            ClassNotFoundException,
+                                            AccountIDNotRecognisedException {
 
         SocialMedia mySocialMedia = new SocialMedia();
         
-        int account0 = mySocialMedia.createAccount("jstall", "this is an account all about coding");
+        // Testing Account Methods
+
+        int account0 = mySocialMedia.createAccount("test0");
+
+        mySocialMedia.updateAccountDescription("test8", "Added desc");
+
+        // int account1 = mySocialMedia.createAccount("test1", "this is an account is test 1.");
+
+        // int post0 = mySocialMedia.createPost("test0", "this is a post made by test1");
         
-        int account1 = mySocialMedia.createAccount("twhite");
+        // int endorsement0 = mySocialMedia.endorsePost("test0", post0);
 
-        // int account2 = mySocialMedia.createAccount("boyIReallyHopeThisHandleIsn'tTooLong");//testing invalid handle execption
+        // int comment0 = mySocialMedia.commentPost("test0", post0, "this is a comment on post0 by test0");
+        // int comment1 = mySocialMedia.commentPost("test0", comment0, "this is a comment on comment0 by test0");
+        // int comment2 = mySocialMedia.commentPost("test0", post0, "this is a comment on post0 by test0");
+        // int comment3 = mySocialMedia.commentPost("test0", comment2, "this is a comment on comment2 by test0");
+
+        System.out.println(mySocialMedia.showAccount("test0"));
         
-        // System.out.println(account0);
-
-        // System.out.println(account1);
-
-        // System.out.println(account2);
-
-        // System.out.println(mySocialMedia.showAccount("jstall"));
-
-        // System.out.println(mySocialMedia.showAccount("twhite"));
-
-        // mySocialMedia.updateAccountDescription("twhite", "i always longed to haved a description...");
-
-        // System.out.println(mySocialMedia.showAccount("twhite"));
-
-        // System.out.println(mySocialMedia.showAccount("notACorrectHandle")); //testing that errors get thrown
-
-        int post1 = mySocialMedia.createPost("jstall", "First message");
-
-        // System.out.println(mySocialMedia.showIndividualPost(post1));
-
-        int post2 = mySocialMedia.commentPost("twhite", post1, "First Comment");
-
-        // System.out.println(mySocialMedia.showIndividualPost(post2));
-
-        int post3 = mySocialMedia.commentPost("jstall", post2, "Sub Comment Comment");
-
-        int post4 = mySocialMedia.commentPost("twhite", post3, "Second Sub Comment");
-
-        int post5 = mySocialMedia.commentPost("twhite", post1, "Second Comment");
-
-
-        // int post5 = mySocialMedia.commentPost("twhite", post1, "Second Comment");
-
-        int endorse1 = mySocialMedia.endorsePost("twhite", post1);
         
-        // int testPost = mySocialMedia.endorsePost("twhite", endorse1);
-
-        // String post1Desc = mySocialMedia.showIndividualPost(post2);
-
-        // System.out.println();
-
-        // System.out.println(mySocialMedia.showIndividualPost(post1));
-
-        // System.out.println(mySocialMedia.getTotalOriginalPosts());
-
-        // System.out.println(post1Desc);
-
-        mySocialMedia.removeAccount("jstall");
-
-        // mySocialMedia.deletePost(post3);
-
-        StringBuilder test = mySocialMedia.showPostChildrenDetails(post2);
-
-        System.out.println(test);
-
-        // mySocialMedia.savePlatform("test.ser");
-
-        // mySocialMedia.loadPlatform("test.ser");
-
-        // System.out.println(mySocialMedia.showAccount("jstall"));
-
-        // System.out.println(mySocialMedia.showAccount("twhite"));
-
-        // System.out.println(mySocialMedia.showPostChildrenDetails(0).toString());
 
     }
 
