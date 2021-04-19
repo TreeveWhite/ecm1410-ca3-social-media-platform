@@ -212,7 +212,7 @@ public class SocialMedia implements SocialMediaPlatform {
 		Account deleteAccount = getAccount(id);
 
 		if (deleteAccount == null) {
-			throw new AccountIDNotRecognisedException("Account ID used when trying to delete accpunt does not exist in system.");
+			throw new AccountIDNotRecognisedException("Attemting to delete Account with a given Account ID which does not exist in system.");
 		}
 		
 		for (Post post : allPosts) {
