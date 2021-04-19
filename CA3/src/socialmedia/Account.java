@@ -44,6 +44,17 @@ public class Account implements Serializable {
     private String description;
 
     /**
+     * This is the number of posts, including endorsements and replies the
+     * account has.
+     */
+    private int numPosts = 0;
+
+    /**
+     * This is the number of endorsements the account has recieved.
+     */
+    private int numEndorsements = 0;
+
+    /**
      * This is the static set of usernames in the system, it contains
      * all the handles of each user within the system.
      */
@@ -158,6 +169,36 @@ public class Account implements Serializable {
     }
 
     /**
+     * This method adds one to the number of posts, including endorsements and replies the 
+     * account has.
+     */
+    public void addNumPost() {
+        numPosts++;
+    }
+
+    /**
+     * This method adds one to the number of endorsements the account has.
+     */
+    public void addNumEndorse() {
+        numEndorsements++;
+    }
+
+    /**
+     * This method minuses one to the number of posts, including endorsements and replies the 
+     * account has.
+     */
+    public void minusNumPost() {
+        numPosts--;
+    }
+
+    /**
+     * This method minuses one to the number of endorsements the account has.
+     */
+    public void minusNumEndorse() {
+        numEndorsements--;
+    }
+
+    /**
      * This method returns the handle of the user.
      * 
      * @return The handle of the user.
@@ -191,9 +232,10 @@ public class Account implements Serializable {
      * @return The string of text is returned. 
      */
     public String toString() {
-        if (description == null) {
-            description = "Description has not been set.";
+        String descToShow = "";
+        if (description != null) {
+            descToShow += description;
         }
-        return "ID: " + id + "\nHandle: " + handle + "\nDescription: " + description;
+        return "ID: " + id + "\nHandle: " + handle + "\nDescription: " + descToShow+"\nPost count: "+numPosts+"\nEndorse count: "+numEndorsements;
     }
 }

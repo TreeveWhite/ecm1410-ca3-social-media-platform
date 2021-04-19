@@ -346,6 +346,8 @@ public class SocialMedia implements SocialMediaPlatform {
 		Post newPost = new Post(author, message);
 
 		addPostToAllPosts(newPost);
+
+		author.addNumPost();
 		
 		return newPost.getID();
 	}
@@ -389,6 +391,9 @@ public class SocialMedia implements SocialMediaPlatform {
 		Endorsement newEndorsement = new Endorsement(author, linkedPost);
 		linkedPost.addEndorsement(newEndorsement);
 		addPostToAllPosts(newEndorsement);
+		linkedPost.getAuthor().addNumEndorse();
+		linkedPost.getAuthor().addNumPost();
+		author.addNumPost();
 		return newEndorsement.getID();
 	}
 
@@ -431,6 +436,8 @@ public class SocialMedia implements SocialMediaPlatform {
 		Comment newComment = new Comment(author, message, linkedPost);
 		linkedPost.addComment(newComment);
 		addPostToAllPosts(newComment);
+		author.addNumPost();
+		linkedPost.getAuthor().addNumPost();
 		return newComment.getID();
 	}
 
@@ -463,6 +470,16 @@ public class SocialMedia implements SocialMediaPlatform {
 
 		for (Endorsement endorsement : deletePost.getAllEndorsements()) {
 			deletePostFromAllPosts(endorsement);
+		}
+
+		deletePost.getAuthor().minusNumPost();
+
+		if (deletePost.getClass().getName().startsWith("socialmedia.Endorsement")) {
+			((Endorsement) deletePost).getLinkedPost().getAuthor().minusNumEndorse();
+			((Endorsement) deletePost).getLinkedPost().getAuthor().minusNumPost();
+		}
+		else if (deletePost.getClass().getName().startsWith("socialmedia.Comment")) {
+			((Comment) deletePost).getLinkedPost().getAuthor().minusNumPost();
 		}
 
 		deletePost.empty();
