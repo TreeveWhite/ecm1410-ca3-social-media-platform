@@ -78,6 +78,9 @@ public class Post implements Serializable {
         if (message.length() > 100) {
             throw new InvalidPostException("Post has a length of more than 100 characters.");
         }
+        if (message.equals("")) {
+            throw new InvalidPostException("Post cannot be empty.");
+        }
         if (author == null) {
             throw new HandleNotRecognisedException("Account with given handle does not exist.");
         }
