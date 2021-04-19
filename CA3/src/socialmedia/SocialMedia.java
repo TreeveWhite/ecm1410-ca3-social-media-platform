@@ -7,10 +7,16 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /**
- * <h2>SocialMedia</h2>
- * 
- * This is an implimentation of the SocialMediaPlatform Interface.
+ * This class is am implimetation of the SocialMediaPlatform interface which extends the 
+ * MiniSocialMediaPlatform interface. Therefore it is resposible for most of the functionality 
+ * of the platform. 
  * <p>
+ * A SocialMedia object has a list of all accounts and a list of all posts which is used to hold
+ * all data on the Social Media Platform. The accounts, posts, endorsments and comments in these
+ * lists are then created, removed an edisted using the methods in the class.
+ * <p>
+ * The class itself also has a static value for its SerialVersionUID used when 
+ * serializing the platform.
  * 
  * @author 700008432
  * @author 690033172
@@ -176,8 +182,13 @@ public class SocialMedia implements SocialMediaPlatform {
 	 * It does checks to ensure the handle is valid and not already in use within the
 	 * system.
 	 * 
-	 * @param handle	The handle of the new user.
+	 * @param handle		The handle of the new user.
 	 * @param description	The description to be displayed on the profile.
+	 * 
+	 * @throws IllegalHandleException	Thrown if the handle is already in use by another user.
+	 * @throws InvalidHandleException	Thrown if the handle is over 30 chars, is empty or has white space.
+	 * 
+	 * @return This returns the id of the new account. 
      */
 	@Override
 	public int createAccount(String handle, String description)
@@ -191,10 +202,9 @@ public class SocialMedia implements SocialMediaPlatform {
     /**
      * This method allows the user to delete an account using the account id.
 	 * 
-	 * @param id The id related to account to be deleted.
+	 * @param id 	The id related to account to be deleted.
 	 * 
 	 * @throws AccountIDNotRecognisedException	Thrown when the account id used is not in the system.
-	 * 
      */
 	@Override
 	public void removeAccount(int id)
@@ -220,7 +230,6 @@ public class SocialMedia implements SocialMediaPlatform {
 	 * @param handle	The handle of the account to be removed.
 	 * 
 	 * @throws HandleNotRecognisedException	Thrown when the provided handle is not in the system.
-	 * 
      */
 	@Override
 	public void removeAccount(String handle)
@@ -249,9 +258,8 @@ public class SocialMedia implements SocialMediaPlatform {
 	 * @param newHandle		The handle the user would like to change to.
 	 * 
 	 * @throws HandleNotRecognisedException 	Thrown when the old handle is not recognised in the system.
-	 * @throws IllegalHandleException 	Thrown when the new handle is already in use by another account.
-	 * @throws InvalidHandleException 	Thrown when the new handle is over 30 chars, empty, or contains white space.
-	 * 
+	 * @throws IllegalHandleException 			Thrown when the new handle is already in use by another account.
+	 * @throws InvalidHandleException 			Thrown when the new handle is over 30 chars, empty, or contains white space.
      */
 	@Override
 	public void changeAccountHandle(String oldHandle, String newHandle)
@@ -277,11 +285,10 @@ public class SocialMedia implements SocialMediaPlatform {
     /**
      * This method allows the user to update their account description.
 	 * 
-	 * @param handle	The handle of the account.
+	 * @param handle		The handle of the account.
 	 * @param description	The new description to be displayed.
 	 * 
 	 * @throws HandleNotRecognisedException Thrown when the handle is not recognised as belonging to an account in the system.
-	 *	
      */
 	@Override
 	public void updateAccountDescription(String handle, String description) 
@@ -497,46 +504,7 @@ public class SocialMedia implements SocialMediaPlatform {
     /**
      * This method impliments the showPostChildrenDetails of the MiniSocialMediaPlatform 
 	 * interface by building a StringBuilder showing the details of the current post and
-	 * all its children posts. The format is as follows:
-	 * 
-	 * See an example:
-	 * 
-	 * <pre>
-	 * ID: 1
-	 * Account: user1
-	 * No. endorsements: 2 | No. comments: 3
-	 * I like examples.
-	 * |
-	 * | > ID: 3
-	 *     Account: user2
-	 *     No. endorsements: 0 | No. comments: 1
-	 *     No more than me...
-	 *     |
-	 *     | > ID: 5
-	 *         Account: user1
-	 *         No. endorsements: 0 | No. comments: 1
-	 *         I can prove!
-	 *         |                                         
-	 *         | > ID: 6                                 
-	 *             Account: user2                        
-	 *             No. endorsements: 0 | No. comments: 0 
-	 *             prove it                    
-	 * | > ID: 4
-	 *     Account: user3
-	 *     No. endorsements: 4 | No. comments: 0
-	 *     Can't you do better than this?
-	 * 
-	 * | > ID: 7
-	 *     Account: user5
-	 *     No. endorsements: 0 | No. comments: 1
-	 *     where is the example?
-	 *     |
-	 *     | > ID: 10
-	 *         Account: user1
-	 *         No. endorsements: 0 | No. comments: 0
-	 *         This is the example!
-	 * </pre>
-	 * 
+	 * all its children posts. See interface for further details.
 	 * 
 	 * @param id 	The id of the post to be shown.
 	 * 

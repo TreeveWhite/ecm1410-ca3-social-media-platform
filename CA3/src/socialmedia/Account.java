@@ -7,9 +7,13 @@ import java.util.Set;
 /**
  * This class contains all the methods and attributes of the Account and therefore
  * is responsible for handling all the details related to a user on the Social Media
- * Platform. An Account has a unique ID (sequencially incremennting acording to num 
+ * Platform. 
+ * <p>
+ * An Account has a unique ID (sequencially incremennting acording to num 
  * of users on the system), a string handle (username) and a description similar to 
- * a bio. The class itself has a static value for its SerialVersionUID used when 
+ * a bio. 
+ * <p>
+ * The class itself has a static value for its SerialVersionUID used when 
  * serializing the platform, a num of accounts which tracks the number of accounts
  * created and a HashSet of all usernames (handles).
  * 

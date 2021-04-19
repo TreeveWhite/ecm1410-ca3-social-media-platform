@@ -3,13 +3,18 @@ package socialmedia;
 import java.io.Serializable;
 
 /**
- * <h2>Post</h1>
- * 
- * This class consists of the methods and attributes of a Post.
+ * This class consists of the methods and attributes of a Post and therefore is
+ * responsible for all the details regarding a Post and due to how a Comment and 
+ * Endorsement inherit from Post it is respinsible for some methods ad details of
+ * a a Comment and Endorsement.
  * <p>
  * A Post had a unique sequencial ID, a message up to 100 characters long, an 
  * author (Account) it is associated with, a list of all comments it recieves 
  * and a list of all endorsements it recieves.
+ * <p>
+ * The class itself has two static values which are the serialVersionUID which is 
+ * used when serializing the platform and numPosts which tracks the number of posts
+ * which have been created.
  * 
  * @author 700008432
  * @author 690033172
@@ -131,6 +136,11 @@ public class Post implements Serializable {
         allEndorsements = newList;
     }
 
+    /**
+     * This method emptys a post. This includes removing the author a post refers to, replacing
+     * the messsage with the string "The original content was removed from the system and is no longer
+     * available." and making the post non-actioanble.
+     */
     public void empty() {
         this.message = "The original content was removed from the system and is no longer available.";
         this.author = null;
