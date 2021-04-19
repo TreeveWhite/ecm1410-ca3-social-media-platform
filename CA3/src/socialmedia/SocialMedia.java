@@ -686,18 +686,14 @@ public class SocialMedia implements SocialMediaPlatform {
 	@Override
 	public int getMostEndorsedAccount() {
 		Account mostEndorsedAccount = null;
-		
+		int maxNumEndorsements = 0;
+		int numEndorse;
+
 		for (Account account : allAccounts) {
-			int maxNumEndorsements = 0;
-			int accountNumEndorsements = 0;
-			for (Post post : allPosts) {
-				if (post.getAuthor() == account) {
-					accountNumEndorsements += post.getAllEndorsements().length;
-				}
-			}
-			if (accountNumEndorsements > maxNumEndorsements) {
+			numEndorse = account.getNumEndorsements();
+			if (numEndorse > maxNumEndorsements) {
 				mostEndorsedAccount = account;
-				maxNumEndorsements = accountNumEndorsements;
+				maxNumEndorsements = numEndorse;
 			}
 		}
 		return mostEndorsedAccount.getId();
