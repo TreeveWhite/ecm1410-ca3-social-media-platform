@@ -5,8 +5,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * <h2>Account</h2>
- * 
+ * This class contains all the methods and attributes of the Account and therefore
+ * is responsible for handling all the details related to a user on the Social Media
+ * Platform. An Account has a unique ID (sequencially incremennting acording to num 
+ * of users on the system), a string handle (username) and a description similar to 
+ * a bio. The class itself has a static value for its SerialVersionUID used when 
+ * serializing the platform, a num of accounts which tracks the number of accounts
+ * created and a HashSet of all usernames (handles).
  * 
  * @author 700008432
  * @author 690033172
