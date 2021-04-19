@@ -194,6 +194,6 @@ public class Account implements Serializable {
         if (description == null) {
             description = "Description has not been set.";
         }
-        return "Id: " + id + "\nHandle: " + handle + "\nDescription: " + description;
+        return "ID: " + id + "\nHandle: " + handle + "\nDescription: " + description;
     }
 }
