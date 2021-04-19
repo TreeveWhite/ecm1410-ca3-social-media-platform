@@ -226,6 +226,24 @@ public class Account implements Serializable {
     }
 
     /**
+     * This method returns the number of posts, including endorsements and replies an account has.
+     * 
+     * @return the number of posts, including endorsements and replies an account has.
+     */
+    public int getNumPosts() {
+        return numPosts;
+    }
+
+    /**
+     * This method returns the number of endorsements an account has.
+     * 
+     * @return the number of endorsements an account has.
+     */
+    public int getNumEndorsements() {
+        return numEndorsements;
+    }
+
+    /**
      * This method allows Accounts to be printed out as text that includes
      * all useful information.
      * 
