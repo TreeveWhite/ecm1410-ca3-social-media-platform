@@ -15,7 +15,7 @@ import socialmedia.SocialMedia;
  * 
  * This file is used to test our social media package and file.
  */
-public class SocialMediaTest {
+public class TreeveTest {
 
     public static void main(String[] args) throws 
                                             IllegalHandleException, 
