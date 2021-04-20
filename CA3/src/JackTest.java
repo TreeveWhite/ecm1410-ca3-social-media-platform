@@ -50,11 +50,13 @@ public class JackTest {
 
         int post1 = mySocialMedia.createPost("jstall", "First message");
 
+        int post2 = mySocialMedia.createPost("twhite", "Another message");
+
         // System.out.println(mySocialMedia.showIndividualPost(post1));
 
-        int post2 = mySocialMedia.commentPost("twhite", post1, "First Comment");
+        // int post2 = mySocialMedia.commentPost("twhite", post1, "First Comment");
 
-        // System.out.println(mySocialMedia.showIndividualPost(post2));
+        // // System.out.println(mySocialMedia.showIndividualPost(post2));
 
         int post3 = mySocialMedia.commentPost("jstall", post2, "Sub Comment Comment");
 
@@ -62,10 +64,13 @@ public class JackTest {
 
         int post5 = mySocialMedia.commentPost("twhite", post1, "Second Comment");
 
-
         // int post5 = mySocialMedia.commentPost("twhite", post1, "Second Comment");
 
-        int endorse1 = mySocialMedia.endorsePost("twhite", post1);
+        // int endorse1 = mySocialMedia.endorsePost("twhite", post1);
+
+        // int endorse2 = mySocialMedia.endorsePost("jstall", post2);
+
+        // int endorse3 = mySocialMedia.endorsePost("jstall", post2);
         
         // int testPost = mySocialMedia.endorsePost("twhite", endorse1);
 
@@ -79,23 +84,33 @@ public class JackTest {
 
         // System.out.println(post1Desc);
 
-        mySocialMedia.removeAccount("jstall");
+        // mySocialMedia.removeAccount("jstall");
 
         // mySocialMedia.deletePost(post3);
 
-        StringBuilder test = mySocialMedia.showPostChildrenDetails(post2);
+        // StringBuilder test = mySocialMedia.showPostChildrenDetails(post1);
 
-        System.out.println(test);
+        // System.out.println(test);
+
+        // System.out.println(mySocialMedia.getMostEndorsedAccount());
+
+        System.out.println(mySocialMedia.getTotalEndorsmentPosts());
 
         // mySocialMedia.savePlatform("test.ser");
 
         // mySocialMedia.loadPlatform("test.ser");
+
+        // System.out.println(mySocialMedia.getMostEndorsedAccount());
 
         // System.out.println(mySocialMedia.showAccount("jstall"));
 
         // System.out.println(mySocialMedia.showAccount("twhite"));
 
         // System.out.println(mySocialMedia.showPostChildrenDetails(0).toString());
+
+        // mySocialMedia.erasePlatform();
+
+        // System.out.println(mySocialMedia.getMostEndorsedAccount());
 
     }
 
