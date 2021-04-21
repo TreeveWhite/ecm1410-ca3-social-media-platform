@@ -579,6 +579,10 @@ public class SocialMedia implements SocialMediaPlatform {
 				postDetails.append("\n"+tabs+" | ");
 				addPostChildrenDetails(postDetails, comment.getAllComments(), numTabs+1);
 			}
+			else if (numTabs == 0){
+				postDetails.append("\n");
+			}
+			
 		}
 	}
 
