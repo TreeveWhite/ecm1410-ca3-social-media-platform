@@ -659,6 +659,8 @@ public class SocialMedia implements SocialMediaPlatform {
 	 * iterface by identifing and returning the post with the most number of endorsements,
 	 * a.k.a. the most popular post.
 	 * 
+	 * If the method returns -1 then it means there are no Posts in the platform.
+	 * 
 	 * @return The ID of the most popular post.
      */
 	@Override
@@ -666,6 +668,7 @@ public class SocialMedia implements SocialMediaPlatform {
 		Post mostEndorsed = null;
 		int maxNumEndorsements = 0;
 		int postNumEndorsements;
+		int mostEndorsedId = -1;
 		for (Post post : allPosts) {
 			postNumEndorsements = post.getAllEndorsements().length;
 			if (postNumEndorsements >= maxNumEndorsements) {
@@ -673,7 +676,11 @@ public class SocialMedia implements SocialMediaPlatform {
 				maxNumEndorsements = postNumEndorsements;
 			}
 		}
-		return mostEndorsed.getID();
+		if (mostEndorsed != null) {
+			mostEndorsedId = mostEndorsed.getID();
+		}
+
+		return mostEndorsedId;
 	}
 
 	/**
@@ -681,11 +688,14 @@ public class SocialMedia implements SocialMediaPlatform {
 	 * account within the system and checks over all their posts to see how many endorsements each user
 	 * has.
 	 * 
+	 * If the method returns -1 then it means there are no Accounts in the platform.
+	 * 
 	 * @return It returns the Id of the account with the most endorsements on the platform.
 	 */
 	@Override
 	public int getMostEndorsedAccount() {
 		Account mostEndorsedAccount = null;
+		int mostEndorsedAccountId = -1;
 		int maxNumEndorsements = 0;
 		int numEndorse;
 
@@ -696,7 +706,10 @@ public class SocialMedia implements SocialMediaPlatform {
 				maxNumEndorsements = numEndorse;
 			}
 		}
-		return mostEndorsedAccount.getId();
+		if (mostEndorsedAccount != null) {
+			mostEndorsedAccountId = mostEndorsedAccount.getId();
+		}
+		return mostEndorsedAccountId;
 	}
 
     /**
