@@ -1,7 +1,6 @@
 package socialmedia;
 
 /**
- * <h2>Comment</h2>
  * This class consists of the specific methods and attributes of a Comment, some of the other methods and
  * attributes of a Comment are inheritted from a Post. Therefore this class is responsible for the Comment
  * specific methods and attributes.
