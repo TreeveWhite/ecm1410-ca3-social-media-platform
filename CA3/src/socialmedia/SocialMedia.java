@@ -470,6 +470,9 @@ public class SocialMedia implements SocialMediaPlatform {
 
 		for (Endorsement endorsement : deletePost.getAllEndorsements()) {
 			deletePostFromAllPosts(endorsement);
+			endorsement.getAuthor().minusNumPost();
+			endorsement.getLinkedPost().getAuthor().minusNumEndorse();
+			endorsement.getLinkedPost().getAuthor().minusNumPost();
 		}
 
 		deletePost.getAuthor().minusNumPost();
