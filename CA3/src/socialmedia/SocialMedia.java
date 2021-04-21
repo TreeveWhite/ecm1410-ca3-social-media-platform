@@ -658,7 +658,7 @@ public class SocialMedia implements SocialMediaPlatform {
      * This method implients the getMostEndorsedPost method in the MiniSocialMediaPlatform
 	 * iterface by identifing and returning the post with the most number of endorsements,
 	 * a.k.a. the most popular post.
-	 * 
+	 * <p>
 	 * If the method returns -1 then it means there are no Posts in the platform.
 	 * 
 	 * @return The ID of the most popular post.
@@ -687,7 +687,7 @@ public class SocialMedia implements SocialMediaPlatform {
 	 * This method allows the user to retrieve the account with most endorsements. It loops over every
 	 * account within the system and checks over all their posts to see how many endorsements each user
 	 * has.
-	 * 
+	 * <p>
 	 * If the method returns -1 then it means there are no Accounts in the platform.
 	 * 
 	 * @return It returns the Id of the account with the most endorsements on the platform.
