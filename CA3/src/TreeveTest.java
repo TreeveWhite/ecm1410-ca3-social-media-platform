@@ -8,6 +8,7 @@ import socialmedia.InvalidPostException;
 import socialmedia.NotActionablePostException;
 import socialmedia.PostIDNotRecognisedException;
 import socialmedia.SocialMedia;
+import socialmedia.SocialMediaPlatform;
 
 
 /**
@@ -28,7 +29,7 @@ public class TreeveTest {
                                             ClassNotFoundException,
                                             AccountIDNotRecognisedException {
 
-        SocialMedia mySocialMedia = new SocialMedia();
+        SocialMediaPlatform mySocialMedia = new SocialMedia();
 
         int account0 = mySocialMedia.createAccount("test0");
 
@@ -39,11 +40,16 @@ public class TreeveTest {
         int post0 = mySocialMedia.createPost("test0", "this is a post made by test1");
         
         int endorsement0 = mySocialMedia.endorsePost("test1", post0);
+        int endorsement1 = mySocialMedia.endorsePost("test1", post0);
 
         int comment0 = mySocialMedia.commentPost("test0", post0, "this is a comment on post0 by test0");
-        int comment1 = mySocialMedia.commentPost("test0", comment0, "this is a comment on comment0 by test0");
+        int comment1 = mySocialMedia.commentPost("test1", comment0, "this is a comment on comment0 by test1");
+        int comment4 = mySocialMedia.commentPost("test0", post0, "this is a comment on post0 by test0");
+        int comment5 = mySocialMedia.commentPost("test0", post0, "this is a comment on post0 by test0");
         int comment2 = mySocialMedia.commentPost("test0", post0, "this is a comment on post0 by test0");
-        int comment3 = mySocialMedia.commentPost("test0", comment2, "this is a comment on comment2 by test0");
+        int comment3 = mySocialMedia.commentPost("test1", comment2, "this is a comment on comment2 by test1");
+
+        int endorsement2 = mySocialMedia.endorsePost("test1", comment0);
         
         System.out.println("Accounts:" );
         System.out.println(mySocialMedia.showAccount("test0"));
@@ -59,6 +65,33 @@ public class TreeveTest {
         System.out.println("num comment - " + mySocialMedia.getTotalCommentPosts());
         System.out.println("num endorse - " + mySocialMedia.getTotalEndorsmentPosts());
         System.out.println("num posts - " + mySocialMedia.getTotalOriginalPosts());
+
+        System.out.println("\nSaving Platform");
+        mySocialMedia.savePlatform("test.ser");
+
+        System.out.println("\nErasing Platform");
+        mySocialMedia.erasePlatform();
+
+        System.out.println("\nPost Erase Analytics: ");
+        System.out.println("most endorse account - " + mySocialMedia.getMostEndorsedAccount());
+        System.out.println("most endorse post - " + mySocialMedia.getMostEndorsedPost());
+        System.out.println("num accounts - " + mySocialMedia.getNumberOfAccounts());
+        System.out.println("num comment - " + mySocialMedia.getTotalCommentPosts());
+        System.out.println("num endorse - " + mySocialMedia.getTotalEndorsmentPosts());
+        System.out.println("num posts - " + mySocialMedia.getTotalOriginalPosts());
+
+        System.out.println("\nLoading Platform");
+        mySocialMedia.loadPlatform("test.ser");
+        
+        System.out.println("\nPost Load Analytics: ");
+        System.out.println("most endorse account - " + mySocialMedia.getMostEndorsedAccount());
+        System.out.println("most endorse post - " + mySocialMedia.getMostEndorsedPost());
+        System.out.println("num accounts - " + mySocialMedia.getNumberOfAccounts());
+        System.out.println("num comment - " + mySocialMedia.getTotalCommentPosts());
+        System.out.println("num endorse - " + mySocialMedia.getTotalEndorsmentPosts());
+        System.out.println("num posts - " + mySocialMedia.getTotalOriginalPosts());
+
+
     }
 
 }
