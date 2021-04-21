@@ -71,10 +71,10 @@ public class SocialMedia implements SocialMediaPlatform {
 	}
 
 	/**
-	 * This method is used to add a instance of a post to the array of all accounts on
+	 * This method is used to add a instance of a post to the array of all posts on
 	 * the platform.
 	 * 
-	 * @param newAccount	The new account to be added to the array.
+	 * @param newPost	The new post to be added to the array.
 	 */
 	public void addPostToAllPosts(Post newPost) {
 		Post[] newList = new Post[allPosts.length + 1];
@@ -138,11 +138,11 @@ public class SocialMedia implements SocialMediaPlatform {
 	}
 
 	/**
-	 * This method gets an Account from all accounts with the given handle.
+	 * This method gets an Account from all accounts with the given id.
 	 * 
-	 * @param handle	The handle of the desired account.
+	 * @param id	The id of the desired account.
 	 * 
-	 * @return	This returns the account with the matching handle.
+	 * @return	This returns the account with the matching id.
 	 */
 	public Account getAccount(int id) {
 		Account wantedAccount = null;

@@ -41,9 +41,7 @@ public class Endorsement extends Post {
      * @param author        The account associated with the endorsement.
      * @param linkedPost    The Post which the endorsement has ben added on.
      * 
-     * @throws InvalidPostException             Thrown when the message is longer than 100 characters.
      * @throws HandleNotRecognisedException     Thrown if an Account with given handle does not exist.
-     * @throws PostIDNotRecognisedException     Thrown if post endorsement linked to does not exist.
      */
     public Endorsement(Account author, Post linkedPost)
                         throws HandleNotRecognisedException {

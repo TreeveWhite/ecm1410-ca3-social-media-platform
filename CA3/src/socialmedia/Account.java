@@ -71,7 +71,7 @@ public class Account implements Serializable {
      * will be the username of the account. This constructor is for when the user does not
      * want to add a description on the creation of their account.
      *  
-     * @param Handle    The username the user wants to use.
+     * @param handle    The username the user wants to use.
      * 
      * @throws IllegalHandleException   Thrown if the handle is already in use.
      * @throws InvalidHandleException   Thrown if the handle is over 30 characters, 
@@ -101,7 +101,7 @@ public class Account implements Serializable {
      * will be the username of the account, and the description which will be connected to the
      * account.
      *  
-     * @param Handle        The username the user wants to use.
+     * @param handle        The username the user wants to use.
      * @param description   The description the user wants to display.
      * 
      * @throws IllegalHandleException   Thrown if the handle is already in use.

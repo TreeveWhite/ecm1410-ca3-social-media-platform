@@ -38,7 +38,9 @@ public class Comment extends Post{
      * @param message       The message contained in the comment.
      * @param linkedPost    The Post which the comment has ben added on.
      * 
-     * @throws InvalidPostException     Thrown when the message is longer than 100 characters.
+     * @throws InvalidPostException             Thrown when the message is longer than 100 characters.
+     * @throws HandleNotRecognisedException     Thrown when the given account ahdnle does not exist in
+     *                                          the system.
      */
     public Comment(Account author, String message, Post linkedPost) 
                     throws InvalidPostException,
