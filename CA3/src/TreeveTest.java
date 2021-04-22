@@ -40,7 +40,7 @@ public class TreeveTest {
         int post0 = mySocialMedia.createPost("test0", "this is a post made by test1");
         
         int endorsement0 = mySocialMedia.endorsePost("test1", post0);
-        int endorsement1 = mySocialMedia.endorsePost("test1", post0);
+        // int endorsement1 = mySocialMedia.endorsePost("test1", post0);
 
         int comment0 = mySocialMedia.commentPost("test0", post0, "this is a comment on post0 by test0");
         int comment1 = mySocialMedia.commentPost("test1", comment0, "this is a comment on comment0 by test1");
@@ -90,8 +90,5 @@ public class TreeveTest {
         System.out.println("num comment - " + mySocialMedia.getTotalCommentPosts());
         System.out.println("num endorse - " + mySocialMedia.getTotalEndorsmentPosts());
         System.out.println("num posts - " + mySocialMedia.getTotalOriginalPosts());
-
-
     }
-
 }
