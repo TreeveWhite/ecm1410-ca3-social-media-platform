@@ -106,7 +106,12 @@ public class Post implements Serializable {
             throw new HandleNotRecognisedException("Account with given handle does not exist.");
         }
         this.author = author;
-        this.message = "EP@"+linkedPost.getAuthor().getHandle()+": "+linkedPost.getMessage();
+        String linkedAuthorName = linkedPost.getAuthor().getHandle();
+        String linkedPostMessage = linkedPost.getMessage();
+        if ((linkedPostMessage.length() + linkedAuthorName.length() + 5) > 100) {
+            linkedPostMessage = linkedPostMessage.substring(0, 95-linkedAuthorName.length());
+        }
+        this.message = "EP@"+linkedAuthorName+": "+linkedPostMessage;
         this.id = numPosts++;
         this.isActionable = false;
     }
