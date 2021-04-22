@@ -391,8 +391,10 @@ public class SocialMedia implements SocialMediaPlatform {
 		Endorsement newEndorsement = new Endorsement(author, linkedPost);
 		linkedPost.addEndorsement(newEndorsement);
 		addPostToAllPosts(newEndorsement);
+		// increment the linked post's author's number of endorsements and posts.
 		linkedPost.getAuthor().addNumEndorse();
 		linkedPost.getAuthor().addNumPost();
+		// incremenet the endorsement authors number of posts.
 		author.addNumPost();
 		return newEndorsement.getID();
 	}
@@ -469,6 +471,7 @@ public class SocialMedia implements SocialMediaPlatform {
 		}
 
 		for (Endorsement endorsement : deletePost.getAllEndorsements()) {
+			// Removing endorsement and decrease the accounts num posts and num endorse
 			deletePostFromAllPosts(endorsement);
 			endorsement.getAuthor().minusNumPost();
 			endorsement.getLinkedPost().getAuthor().minusNumEndorse();
@@ -554,8 +557,10 @@ public class SocialMedia implements SocialMediaPlatform {
 			throw new NotActionablePostException("Attempting to view non-actionable post.");
 		}
 
+		// Add the parent post to the string builder
 		postDetails.append(showIndividualPost(id));
 		postDetails.append("\n | ");
+		// Start the recursive loop over the parent post's children posts
 		addPostChildrenDetails(postDetails, wantedPost.getAllComments(), 0);
 
 		return postDetails;
@@ -577,11 +582,13 @@ public class SocialMedia implements SocialMediaPlatform {
 		for (Comment comment : comments) {
 			String tabs = new String(new char[numTabs]).replace("\0", "     ");
 			postDetails.append("\n"+tabs+" | > "+showIndividualPost(comment.getID()).replace("\n", "\n     "+tabs));
+			// Check if the comment itself has replies (children comments).
 			if (comment.getAllComments().length != 0) {
 				tabs = new String(new char[numTabs + 1]).replace("\0", "     ");
 				postDetails.append("\n"+tabs+" | ");
 				addPostChildrenDetails(postDetails, comment.getAllComments(), numTabs+1);
 			}
+			// check if the comment news a newline spacing after previous comment.
 			else if (numTabs == 0){
 				postDetails.append("\n");
 			}
