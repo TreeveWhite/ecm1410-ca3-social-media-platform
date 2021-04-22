@@ -254,6 +254,7 @@ public class Account implements Serializable {
         if (description != null) {
             descToShow += description;
         }
-        return "ID: " + id + "\nHandle: " + handle + "\nDescription: " + descToShow+"\nPost count: "+numPosts+"\nEndorse count: "+numEndorsements;
+        return "ID: " + id + "\nHandle: " + handle + "\nDescription: " + 
+            descToShow+"\nPost count: "+numPosts+"\nEndorse count: "+numEndorsements;
     }
 }
